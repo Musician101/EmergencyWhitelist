@@ -1,0 +1,17 @@
+# General Data
+name: EmergencyWhitelist
+main: com.emergencywhitelist.EmergencyWhitelist
+version: 1.5
+
+# Command Data
+commands:
+    ewl:
+      aliases: [ewl]
+      description: Simple permissions based whitelisting.
+
+# Generator Data
+categories: [ADMIN]
+description: Simple and quick whitelist enabler.
+maintainer: Musician101
+authors: [Musician101]
+optional: [Permissions]
