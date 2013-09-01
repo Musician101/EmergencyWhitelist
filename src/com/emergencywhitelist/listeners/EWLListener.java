@@ -23,7 +23,7 @@ public class EWLListener implements Listener
 		Player player = event.getPlayer();
 		if (EmergencyWhitelist.isEnabled == true)
 		{
-			if (!player.hasPermission("EmergencyWhitelist.whitelist"))
+			if (!player.hasPermission("emergencywhitelist.whitelist"))
 			{
 				event.disallow(Result.KICK_WHITELIST, "EmergencyWhitelist has been enabled.");
 				plugin.logger().info(player.getName() + " failed to connect.");

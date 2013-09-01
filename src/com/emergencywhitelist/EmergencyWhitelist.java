@@ -91,7 +91,7 @@ public class EmergencyWhitelist extends JavaPlugin
 			{
 				if (args[0].equalsIgnoreCase("Help"))
 				{
-					if (!sender.hasPermission("EmergencyWhitelist.help") == true)
+					if (!sender.hasPermission("emergencywhitelist.help") == true)
 					{
 						sender.sendMessage(goldChat + noPermission);
 						return true;
@@ -106,7 +106,7 @@ public class EmergencyWhitelist extends JavaPlugin
 				}
 				else if (args[0].equalsIgnoreCase("Toggle"))
 				{
-					if (!sender.hasPermission("EmergencyWhitelist.toggle") == true)
+					if (!sender.hasPermission("emergencywhitelist.toggle") == true)
 					{
 						sender.sendMessage(goldChat + noPermission);
 						return true;
@@ -145,7 +145,7 @@ public class EmergencyWhitelist extends JavaPlugin
 				}
 				else if (args[0].equalsIgnoreCase("Version"))
 				{
-					if (!sender.hasPermission("EmergencyWhitelist.version") == true)
+					if (!sender.hasPermission("emergencywhitelist.version") == true)
 					{
 						sender.sendMessage(goldChat + noPermission);
 						return true;
