@@ -1,5 +1,5 @@
 name: EmergencyWhitelist
-main: com.emergencywhitelist.EmergencyWhitelist
+main: musician101.emergencywhitelist.EmergencyWhitelist
 version: 1.5
 description: Simple permissions based whitelisting.
 authors: [Musician101]
