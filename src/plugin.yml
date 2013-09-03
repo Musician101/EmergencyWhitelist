@@ -17,11 +17,15 @@ permissions:
       description: Gives access to all commands.
       children:
          ewl.help: true
+         ewl.reload: true
          ewl.toggle: true
          ewl.whitelist: true
    ewl.help:
       default: op
       description: Allows user/group to access the plugin's help command.
+   ewl.reload:
+      default: op
+      description: Allows user/group to access the plugin's reload command.
    ewl.toggle:
       default: op
       description: Allows user/group to toggle the whitelist on or off.

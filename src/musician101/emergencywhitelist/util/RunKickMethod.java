@@ -23,8 +23,10 @@ public class RunKickMethod
 		plugin.logger().info(Constants.getToggleMessage(plugin.getConfig().getBoolean("enabled")));
 		if (enabled)
 		{
-			Bukkit.broadcastMessage(Constants.WHITELIST_ANNOUNCE);
+			Bukkit.broadcastMessage(Constants.getWhitelistAnnounce(enabled));
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new KickPlayers(plugin), 100L);
 		}
+		else
+			Bukkit.broadcastMessage(Constants.getWhitelistAnnounce(enabled));
 	}
 }
