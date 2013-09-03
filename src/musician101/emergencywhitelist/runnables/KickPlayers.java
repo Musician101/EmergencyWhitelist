@@ -29,7 +29,7 @@ public class KickPlayers implements Runnable
 		for (Player player : players)
 		{
 			if (!player.hasPermission(Constants.PERMISSION_WHITELIST))
-				player.kickPlayer("Server Whitelist has been enabled.");
+				player.kickPlayer("Server whitelist has been enabled.");
 		}
 	}
 	
