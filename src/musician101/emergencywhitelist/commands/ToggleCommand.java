@@ -4,7 +4,6 @@ import musician101.emergencywhitelist.EmergencyWhitelist;
 import musician101.emergencywhitelist.lib.Constants;
 import musician101.emergencywhitelist.util.RunKickMethod;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 /**
@@ -15,7 +14,7 @@ import org.bukkit.command.CommandSender;
 public class ToggleCommand 
 {
 	/**
-	 * @param plugin Reference to the plugin's main class.
+	 * @param plugin References the plugin's main class.
 	 * @param sender The one who sent the command.
 	 * @param enabled Represents the 'enabled' config option.
 	 */
@@ -25,12 +24,8 @@ public class ToggleCommand
 			sender.sendMessage(Constants.NO_PERMISSION);
 		else
 		{
-			if (enabled)
-				new RunKickMethod(plugin, enabled);
-			else if (!enabled)
-				sender.sendMessage(ChatColor.GOLD + "[EmergencyWhitelist] Whitelist disabled.");
-			
 			enabled = !enabled;
+			new RunKickMethod(plugin, enabled);
 			plugin.getConfig().set("enabled", enabled);
 			plugin.saveConfig();
 			plugin.reloadConfig();
