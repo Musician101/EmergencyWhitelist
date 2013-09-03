@@ -1,17 +1,30 @@
-# General Data
 name: EmergencyWhitelist
 main: com.emergencywhitelist.EmergencyWhitelist
 version: 1.5
+description: Simple permissions based whitelisting.
+authors: [Musician101]
+maintainter: Musician101
 
-# Command Data
 commands:
     ewl:
       aliases: [ewl]
       description: Simple permissions based whitelisting.
+      usage: <command> [help|toggle]
 
-# Generator Data
-categories: [ADMIN]
-description: Simple and quick whitelist enabler.
-maintainer: Musician101
-authors: [Musician101]
-optional: [Permissions]
+permissions:
+   ewl.*:
+      default: op
+      description: Gives access to all commands.
+      children:
+         ewl.help: true
+         ewl.toggle: true
+         ewl.whitelist: true
+   ewl.help:
+      default: op
+      description: Allows user/group to access the plugin's help command.
+   ewl.toggle:
+      default: op
+      description: Allows user/group to toggle the whitelist on or off.
+   ewl.whitelist:
+      default: op
+      description: Whitelists user/group for entry onto the server when the whitelist is enabled. 
