@@ -3,12 +3,17 @@ package musician101.emergencywhitelist.lib;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+/**
+ * List of strings used throughout the plugin.
+ * 
+ * @author Musician101
+ */
 public class Constants
 {
-	//Formatting
+	/** Formatting */
 	public static final String PREFIX = ChatColor.GOLD + "[EWL] ";
 	
-	//Player messages.
+	/** Player messages. */
 	public static final String[] HELP_TEXT = {ChatColor.WHITE + "---------" + ChatColor.GOLD + "EmergencyWhitelist" + ChatColor.WHITE + "---------",
 		ChatColor.GOLD + "/ewl toggle: " + ChatColor.WHITE + "Toggles the server whitelist."};
 	
@@ -27,18 +32,18 @@ public class Constants
 		return PREFIX + "Version " + version + " compiled with Bukkit 1.5.2-R1.0. Whitlist: " + isEnabled + ".";
 	}
 	
-	//Command names
+	/** Command names */
 	public static final String EWL = "ewl";
 	public static final String HELP = "help";
 	public static final String TOGGLE = "toggle";
 	
-	//Permissions
+	/** Permissions */
 	public static final String PERMISSION_EWL = "ewl.";
 	public static final String PERMISSION_HELP = PERMISSION_EWL + "help";
 	public static final String PERMISSION_TOGGLE = PERMISSION_EWL + "toggle";
 	public static final String PERMISSION_WHITELIST = PERMISSION_EWL + "whitelist";
 	
-	//Console Messages
+	/** Console Messages */
 	public static String getDisconnectedPlayer(Player player)
 	{
 		return player.getName() + " attempted to connect.";

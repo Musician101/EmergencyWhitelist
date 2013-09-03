@@ -7,9 +7,18 @@ import musician101.emergencywhitelist.util.RunKickMethod;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-
+/**
+ * Runs the necessary code for the '/ewl toggle' command.
+ * 
+ * @author Musician101
+ */
 public class ToggleCommand 
 {
+	/**
+	 * @param plugin Reference to the plugin's main class.
+	 * @param sender The one who sent the command.
+	 * @param enabled Represents the 'enabled' config option.
+	 */
 	public ToggleCommand(EmergencyWhitelist plugin, CommandSender sender, boolean enabled)
 	{
 		if (!sender.hasPermission(Constants.PERMISSION_TOGGLE))

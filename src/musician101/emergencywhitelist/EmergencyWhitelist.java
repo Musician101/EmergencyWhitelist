@@ -11,13 +11,19 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
+/**
+ * The plugin's main class.
+ * 
+ * @author Musician101
+ */
 public class EmergencyWhitelist extends JavaPlugin
 {
-	
 	File configFile;
 	FileConfiguration config;
 	
+	/**
+	 * Set up for a static 'plugin' reference.
+	 */
 	public static EmergencyWhitelist plugin;
 	public EmergencyWhitelist()
 	{
@@ -25,11 +31,17 @@ public class EmergencyWhitelist extends JavaPlugin
 		plugin = this;
 	}
 	
+	/**
+	 * Sets up the logger.
+	 * 
+	 * @return JavaPlugin.getLogger()
+	 */
 	public Logger logger()
 	{
 		return getLogger();
 	}
 	
+	/** Initializes the plugin, checks for the config, and register commands and listeners. */
 	public void onEnable()
 	{
 		getServer().getPluginManager().registerEvents(new EWLListener(this), this);
@@ -51,6 +63,7 @@ public class EmergencyWhitelist extends JavaPlugin
 		new RunKickMethod(this, this.getConfig().getBoolean("enabled"));
 	}
 	
+	/** Shuts off the plugin. */
 	public void onDisable()
 	{
 		logger().info("Shutting down.");
