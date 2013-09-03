@@ -22,16 +22,6 @@ public class EmergencyWhitelist extends JavaPlugin
 	FileConfiguration config;
 	
 	/**
-	 * Set up for a static 'plugin' reference.
-	 */
-	public static EmergencyWhitelist plugin;
-	public EmergencyWhitelist()
-	{
-		super();
-		plugin = this;
-	}
-	
-	/**
 	 * Sets up the logger.
 	 * 
 	 * @return JavaPlugin.getLogger()
