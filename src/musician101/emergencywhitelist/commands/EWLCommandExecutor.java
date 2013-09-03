@@ -7,7 +7,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.EventHandler;
 
 /**
  * The code used to run when any command in the plugin is executed.
@@ -32,7 +31,7 @@ public class EWLCommandExecutor implements CommandExecutor
 	 * @param args Command parameters
 	 * @return True if the command was successfully executed
 	 */
-	@EventHandler
+	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
 	{
 		boolean enabled = plugin.getConfig().getBoolean("enabled");
