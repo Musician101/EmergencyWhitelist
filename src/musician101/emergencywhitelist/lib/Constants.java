@@ -40,7 +40,7 @@ public class Constants
 		else
 			isEnabled = "Disabled";
 		
-		return PREFIX + "Version " + version + " compiled with Bukkit 1.5.2-R1.0. Whitlist: " + isEnabled + ".";
+		return PREFIX + "Version " + version + " compiled with Bukkit 1.5.2-R1.0. Whitelist: " + isEnabled + ".";
 	}
 	
 	/** Command names */
