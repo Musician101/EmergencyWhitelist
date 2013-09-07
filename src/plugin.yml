@@ -9,7 +9,7 @@ commands:
     ewl:
       aliases: [ewl]
       description: Simple permissions based whitelisting.
-      usage: <command> [help|toggle]
+      usage: <command> [help|reload|toggle]
 
 permissions:
    ewl.*:
