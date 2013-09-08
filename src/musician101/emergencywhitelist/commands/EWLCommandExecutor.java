@@ -3,7 +3,6 @@ package musician101.emergencywhitelist.commands;
 import musician101.emergencywhitelist.EmergencyWhitelist;
 import musician101.emergencywhitelist.lib.Constants;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -38,10 +37,7 @@ public class EWLCommandExecutor implements CommandExecutor
 		if (command.getName().equalsIgnoreCase(Constants.EWL))
 		{
 			if (args.length == 0)
-			{
 				sender.sendMessage(Constants.getVersionMessage(enabled, plugin.getDescription().getVersion()));
-				sender.sendMessage(ChatColor.GOLD + "[EmergencyWhitelist] Type /ewl help for a list of commands.");
-			}
 			else if (args.length > 0)
 			{
 				if (args[0].equalsIgnoreCase(Constants.HELP))

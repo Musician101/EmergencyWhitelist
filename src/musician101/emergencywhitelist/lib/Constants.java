@@ -32,7 +32,7 @@ public class Constants
 		return PREFIX + "Whitelist " + isEnabled + ".";
 	}
 	
-	public static String getVersionMessage(boolean enabled, String version)
+	public static String[] getVersionMessage(boolean enabled, String version)
 	{
 		String isEnabled = "";
 		if (enabled)
@@ -40,7 +40,7 @@ public class Constants
 		else
 			isEnabled = "Disabled";
 		
-		return PREFIX + "Version " + version + " compiled with Bukkit 1.5.2-R1.0. Whitelist: " + isEnabled + ".";
+		return new String[]{PREFIX + "Version " + version + " compiled with Bukkit 1.5.2-R1.0. Whitelist: " + isEnabled + ".", PREFIX + "Type /ewl help for a list of commands."};
 	}
 	
 	/** Command names */
