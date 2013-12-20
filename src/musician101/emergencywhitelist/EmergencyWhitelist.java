@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import musician101.emergencywhitelist.commands.EWLCommandExecutor;
 import musician101.emergencywhitelist.listeners.EWLListener;
 import musician101.emergencywhitelist.util.RunKickMethod;
-import musician101.emergencywhitelist.util.UpdateChecker;
+import musician101.emergencywhitelist.util.Update;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -19,7 +19,6 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class EmergencyWhitelist extends JavaPlugin
 {
-	protected UpdateChecker updateChecker;
 	File configFile;
 	FileConfiguration config;
 	
@@ -31,6 +30,17 @@ public class EmergencyWhitelist extends JavaPlugin
 	public Logger logger()
 	{
 		return getLogger();
+	}
+	
+	/** Checks if a new version is available. */
+	public void versionCheck()
+	{
+		@SuppressWarnings("unused")
+		Update update = null;
+		if (config.getBoolean("checkForUpdate"))
+			update = new Update(46809, "72784c134bdbc3c2216591011a29df99fac08239");
+		else
+			getLogger().info("Update is disabled");
 	}
 	
 	/** Initializes the plugin, checks for the config, and register commands and listeners. */
@@ -55,20 +65,7 @@ public class EmergencyWhitelist extends JavaPlugin
 		new RunKickMethod(this, this.getConfig().getBoolean("enabled"));
 		
 		/** Check for a new version if it's enabled. */
-		if (config.getBoolean("checkForUpdate"))
-		{
-			this.updateChecker = new UpdateChecker(this, "http://dev.bukkit.org/bukkit-plugins/emergencywhitelist/files.rss");
-			getLogger().info("Update checkers is enabled.");
-			if (this.updateChecker.updateNeeded())
-			{
-				getLogger().info("A new version is available: " + this.updateChecker.getVersion());
-				getLogger().info("Get it from: " + this.updateChecker.getLink());
-			}
-			else
-				getLogger().info("EWL is up to date.");
-		}
-		else if (!config.getBoolean("checkForUpdate"))
-			getLogger().info("Update checker is disabled.");
+		versionCheck();
 	}
 	
 	/** Shuts off the plugin. */
