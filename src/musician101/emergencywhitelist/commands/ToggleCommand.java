@@ -18,17 +18,19 @@ public class ToggleCommand
 	 * @param sender The one who sent the command.
 	 * @param enabled Represents the 'enabled' config option.
 	 */
-	public ToggleCommand(EmergencyWhitelist plugin, CommandSender sender, boolean enabled)
+	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender, boolean enabled)
 	{
 		if (!sender.hasPermission(Constants.PERMISSION_TOGGLE))
-			sender.sendMessage(Constants.NO_PERMISSION);
-		else
 		{
-			enabled = !enabled;
-			new RunKickMethod(plugin, enabled);
-			plugin.getConfig().set("enabled", enabled);
-			plugin.saveConfig();
-			plugin.reloadConfig();
+			sender.sendMessage(Constants.NO_PERMISSION);
+			return false;
 		}
+
+		enabled = !enabled;
+		new RunKickMethod(plugin, enabled);
+		plugin.getConfig().set("enabled", enabled);
+		plugin.saveConfig();
+		plugin.reloadConfig();
+		return true;
 	}
 }

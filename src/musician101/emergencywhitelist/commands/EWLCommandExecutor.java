@@ -41,11 +41,11 @@ public class EWLCommandExecutor implements CommandExecutor
 			else if (args.length > 0)
 			{
 				if (args[0].equalsIgnoreCase(Constants.HELP))
-					new HelpCommand(plugin, sender);
+					return HelpCommand.execute(plugin, sender);
 				else if (args[0].equalsIgnoreCase(Constants.RELOAD))
-					new ReloadCommand(plugin, sender);
+					return ReloadCommand.execute(plugin, sender);
 				else if (args[0].equalsIgnoreCase(Constants.TOGGLE))
-					new ToggleCommand(plugin, sender, enabled);
+					return ToggleCommand.execute(plugin, sender, enabled);
 			}
 			return true;
 		}

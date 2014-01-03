@@ -16,11 +16,15 @@ public class HelpCommand
 	 * @param plugin References the plugin's main class.
 	 * @param sender The one who sent the command.
 	 */
-	public HelpCommand(EmergencyWhitelist plugin, CommandSender sender)
+	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender)
 	{
 		if (!sender.hasPermission(Constants.PERMISSION_HELP))
+		{
 			sender.sendMessage(Constants.NO_PERMISSION);
-		else
-			sender.sendMessage(Constants.HELP_TEXT);
+			return false;
+		}
+		
+		sender.sendMessage(Constants.HELP_TEXT);
+		return true;
 	}
 }
