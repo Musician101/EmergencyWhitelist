@@ -19,8 +19,8 @@ public class RunKickMethod
 	 */
 	public RunKickMethod(EmergencyWhitelist plugin, boolean enabled)
 	{
-		plugin.logger().info(Constants.getWhitelistEnabled(plugin.getConfig().getBoolean("enabled")));
-		plugin.logger().info(Constants.getToggleMessage(plugin.getConfig().getBoolean("enabled")));
+		plugin.getLogger().info(Constants.getWhitelistEnabled(plugin.getConfig().getBoolean("enabled")));
+		plugin.getLogger().info(Constants.getToggleMessage(plugin.getConfig().getBoolean("enabled")));
 		if (enabled)
 		{
 			Bukkit.broadcastMessage(Constants.getWhitelistAnnounce(enabled));

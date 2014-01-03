@@ -39,7 +39,7 @@ public class EWLListener implements Listener
 			if (!player.hasPermission(Constants.PERMISSION_WHITELIST))
 			{
 				event.disallow(Result.KICK_WHITELIST, Constants.WHITELIST_ENABLED);
-				plugin.logger().info(Constants.getDisconnectedPlayer(player));
+				plugin.getLogger().info(Constants.getDisconnectedPlayer(player));
 			}
 		}
 	}

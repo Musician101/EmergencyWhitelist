@@ -1,7 +1,6 @@
 package musician101.emergencywhitelist;
 
 import java.io.File;
-import java.util.logging.Logger;
 
 import musician101.emergencywhitelist.commands.EWLCommandExecutor;
 import musician101.emergencywhitelist.listeners.EWLListener;
@@ -21,16 +20,6 @@ public class EmergencyWhitelist extends JavaPlugin
 {
 	File configFile;
 	FileConfiguration config;
-	
-	/**
-	 * Sets up the logger.
-	 * 
-	 * @return JavaPlugin.getLogger()
-	 */
-	public Logger logger()
-	{
-		return getLogger();
-	}
 	
 	/** Checks if a new version is available. */
 	public void versionCheck()
@@ -71,6 +60,6 @@ public class EmergencyWhitelist extends JavaPlugin
 	/** Shuts off the plugin. */
 	public void onDisable()
 	{
-		logger().info("Shutting down.");
+		getLogger().info("Shutting down.");
 	}
 }
