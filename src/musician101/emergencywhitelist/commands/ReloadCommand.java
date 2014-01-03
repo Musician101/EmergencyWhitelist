@@ -17,7 +17,7 @@ public class ReloadCommand
 	 * @param plugin References the plugin's main class.
 	 * @param sender The one who sent the command.
 	 */
-	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender)
+	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender, boolean enabled)
 	{
 		if (!sender.hasPermission(Constants.PERMISSION_RELOAD))
 		{
@@ -26,7 +26,7 @@ public class ReloadCommand
 		}
 		
 		plugin.reloadConfig();
-		new RunKickMethod(plugin, plugin.getConfig().getBoolean("enabled"));
+		new RunKickMethod(plugin, enabled);
 		return true;
 	}
 }

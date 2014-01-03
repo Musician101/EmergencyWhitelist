@@ -1,5 +1,6 @@
 package musician101.emergencywhitelist.commands;
 
+import musician101.emergencywhitelist.Config;
 import musician101.emergencywhitelist.EmergencyWhitelist;
 import musician101.emergencywhitelist.lib.Constants;
 import musician101.emergencywhitelist.util.RunKickMethod;
@@ -18,19 +19,19 @@ public class ToggleCommand
 	 * @param sender The one who sent the command.
 	 * @param enabled Represents the 'enabled' config option.
 	 */
-	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender, boolean enabled)
+	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender, Config config)
 	{
 		if (!sender.hasPermission(Constants.PERMISSION_TOGGLE))
 		{
 			sender.sendMessage(Constants.NO_PERMISSION);
 			return false;
 		}
-
-		enabled = !enabled;
-		new RunKickMethod(plugin, enabled);
-		plugin.getConfig().set("enabled", enabled);
+		
+		config.enabled = !config.enabled;
+		new RunKickMethod(plugin, config.enabled);
+		plugin.getConfig().set("enabled", config.enabled);
 		plugin.saveConfig();
-		plugin.reloadConfig();
+		config.reloadConfiguration();
 		return true;
 	}
 }

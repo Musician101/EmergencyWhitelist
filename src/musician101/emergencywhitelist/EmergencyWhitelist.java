@@ -7,8 +7,6 @@ import musician101.emergencywhitelist.listeners.EWLListener;
 import musician101.emergencywhitelist.util.RunKickMethod;
 import musician101.emergencywhitelist.util.Update;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -18,15 +16,20 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class EmergencyWhitelist extends JavaPlugin
 {
-	File configFile;
-	FileConfiguration config;
+	Config config;
+	
+	/** Loads the plugin's various configurations and reference files/folders. */
+	public void loadConfiguration()
+	{
+		if (!new File(getDataFolder(), "config.yml").exists()) saveDefaultConfig();
+	}
 	
 	/** Checks if a new version is available. */
 	public void versionCheck()
 	{
 		@SuppressWarnings("unused")
 		Update update = null;
-		if (config.getBoolean("checkForUpdate"))
+		if (config.updateCheck)
 			update = new Update(46809, "72784c134bdbc3c2216591011a29df99fac08239");
 		else
 			getLogger().info("Update is disabled");
@@ -35,21 +38,11 @@ public class EmergencyWhitelist extends JavaPlugin
 	/** Initializes the plugin, checks for the config, and register commands and listeners. */
 	public void onEnable()
 	{
-		getServer().getPluginManager().registerEvents(new EWLListener(this), this);
-		
-		getCommand("ewl").setExecutor(new EWLCommandExecutor(this));
-		
-		configFile = new File(getDataFolder(), "config.yml");
-		saveDefaultConfig();
-		config = new YamlConfiguration();
-		try
-		{
-			config.load(configFile);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		loadConfiguration();
+		config = new Config(this);
+	
+		getServer().getPluginManager().registerEvents(new EWLListener(this, config), this);
+		getCommand("ewl").setExecutor(new EWLCommandExecutor(this, config));
 		
 		new RunKickMethod(this, this.getConfig().getBoolean("enabled"));
 		
