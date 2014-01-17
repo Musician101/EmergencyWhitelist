@@ -40,7 +40,7 @@ public class Constants
 		else
 			isEnabled = "Disabled";
 		
-		return new String[]{PREFIX + "Version " + version + " compiled with Bukkit 1.6.4-R1.0. Whitelist: " + isEnabled + ".", PREFIX + "Type /ewl help for a list of commands."};
+		return new String[]{PREFIX + "Version " + version + " compiled with Bukkit 1.6.4-R2.0. Whitelist: " + isEnabled + ".", PREFIX + "Type /ewl help for a list of commands."};
 	}
 	
 	/** Command names */
