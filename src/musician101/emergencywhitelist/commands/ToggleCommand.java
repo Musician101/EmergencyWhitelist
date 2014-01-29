@@ -2,7 +2,7 @@ package musician101.emergencywhitelist.commands;
 
 import musician101.emergencywhitelist.Config;
 import musician101.emergencywhitelist.EmergencyWhitelist;
-import musician101.emergencywhitelist.lib.Constants;
+import musician101.emergencywhitelist.lib.Commands;
 import musician101.emergencywhitelist.util.RunKickMethod;
 
 import org.bukkit.command.CommandSender;
@@ -21,9 +21,9 @@ public class ToggleCommand
 	 */
 	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender, Config config)
 	{
-		if (!sender.hasPermission(Constants.PERMISSION_TOGGLE))
+		if (!sender.hasPermission(Commands.TOGGLE_PERM))
 		{
-			sender.sendMessage(Constants.NO_PERMISSION);
+			sender.sendMessage(Commands.NO_PERMISSION);
 			return false;
 		}
 		

@@ -1,7 +1,7 @@
 package musician101.emergencywhitelist.runnables;
 
 import musician101.emergencywhitelist.EmergencyWhitelist;
-import musician101.emergencywhitelist.lib.Constants;
+import musician101.emergencywhitelist.lib.Commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -28,7 +28,7 @@ public class KickPlayers implements Runnable
 		Player[] players = Bukkit.getOnlinePlayers();
 		for (Player player : players)
 		{
-			if (!player.hasPermission(Constants.PERMISSION_WHITELIST))
+			if (!player.hasPermission(Commands.WHITELIST_PERM))
 				player.kickPlayer("Server whitelist has been enabled.");
 		}
 	}

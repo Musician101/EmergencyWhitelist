@@ -2,7 +2,7 @@ package musician101.emergencywhitelist.commands;
 
 import musician101.emergencywhitelist.Config;
 import musician101.emergencywhitelist.EmergencyWhitelist;
-import musician101.emergencywhitelist.lib.Constants;
+import musician101.emergencywhitelist.lib.Commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -37,17 +37,17 @@ public class EWLCommandExecutor implements CommandExecutor
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
 	{
-		if (command.getName().equalsIgnoreCase(Constants.EWL))
+		if (command.getName().equalsIgnoreCase(Commands.EWL_CMD))
 		{
 			if (args.length == 0)
-				sender.sendMessage(Constants.getVersionMessage(config.enabled, plugin.getDescription().getVersion()));
+				sender.sendMessage(Commands.getEWLText(config.enabled, plugin.getDescription().getVersion()));
 			else if (args.length > 0)
 			{
-				if (args[0].equalsIgnoreCase(Constants.HELP))
+				if (args[0].equalsIgnoreCase(Commands.HELP_CMD))
 					return HelpCommand.execute(plugin, sender);
-				else if (args[0].equalsIgnoreCase(Constants.RELOAD))
+				else if (args[0].equalsIgnoreCase(Commands.RELOAD_CMD))
 					return ReloadCommand.execute(plugin, sender, config.enabled);
-				else if (args[0].equalsIgnoreCase(Constants.TOGGLE))
+				else if (args[0].equalsIgnoreCase(Commands.TOGGLE_CMD))
 					return ToggleCommand.execute(plugin, sender, config);
 			}
 			return true;

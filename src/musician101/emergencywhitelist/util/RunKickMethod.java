@@ -1,7 +1,7 @@
 package musician101.emergencywhitelist.util;
 
 import musician101.emergencywhitelist.EmergencyWhitelist;
-import musician101.emergencywhitelist.lib.Constants;
+import musician101.emergencywhitelist.lib.Messages;
 import musician101.emergencywhitelist.runnables.KickPlayers;
 
 import org.bukkit.Bukkit;
@@ -19,14 +19,14 @@ public class RunKickMethod
 	 */
 	public RunKickMethod(EmergencyWhitelist plugin, boolean enabled)
 	{
-		plugin.getLogger().info(Constants.getWhitelistEnabled(enabled));
-		plugin.getLogger().info(Constants.getToggleMessage(enabled));
+		plugin.getLogger().info(Messages.getWhitelistEnabled(enabled));
+		plugin.getLogger().info(Messages.getToggleMessage(enabled));
 		if (enabled)
 		{
-			Bukkit.broadcastMessage(Constants.getWhitelistAnnounce(enabled));
+			Bukkit.broadcastMessage(Messages.getWhitelistAnnounce(enabled));
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new KickPlayers(plugin), 100L);
 		}
 		else
-			Bukkit.broadcastMessage(Constants.getWhitelistAnnounce(enabled));
+			Bukkit.broadcastMessage(Messages.getWhitelistAnnounce(enabled));
 	}
 }

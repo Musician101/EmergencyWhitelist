@@ -1,7 +1,7 @@
 package musician101.emergencywhitelist.commands;
 
 import musician101.emergencywhitelist.EmergencyWhitelist;
-import musician101.emergencywhitelist.lib.Constants;
+import musician101.emergencywhitelist.lib.Commands;
 import musician101.emergencywhitelist.util.RunKickMethod;
 
 import org.bukkit.command.CommandSender;
@@ -19,9 +19,9 @@ public class ReloadCommand
 	 */
 	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender, boolean enabled)
 	{
-		if (!sender.hasPermission(Constants.PERMISSION_RELOAD))
+		if (!sender.hasPermission(Commands.RELOAD_PERM))
 		{
-			sender.sendMessage(Constants.NO_PERMISSION);
+			sender.sendMessage(Commands.NO_PERMISSION);
 			return false;
 		}
 		

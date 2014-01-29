@@ -1,7 +1,7 @@
 package musician101.emergencywhitelist.commands;
 
 import musician101.emergencywhitelist.EmergencyWhitelist;
-import musician101.emergencywhitelist.lib.Constants;
+import musician101.emergencywhitelist.lib.Commands;
 
 import org.bukkit.command.CommandSender;
 
@@ -18,13 +18,13 @@ public class HelpCommand
 	 */
 	public static boolean execute(EmergencyWhitelist plugin, CommandSender sender)
 	{
-		if (!sender.hasPermission(Constants.PERMISSION_HELP))
+		if (!sender.hasPermission(Commands.HELP_PERM))
 		{
-			sender.sendMessage(Constants.NO_PERMISSION);
+			sender.sendMessage(Commands.NO_PERMISSION);
 			return false;
 		}
 		
-		sender.sendMessage(Constants.HELP_TEXT);
+		sender.sendMessage(Commands.HELP_TEXT);
 		return true;
 	}
 }
