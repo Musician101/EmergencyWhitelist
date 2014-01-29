@@ -44,7 +44,7 @@ public class EmergencyWhitelist extends JavaPlugin
 		getServer().getPluginManager().registerEvents(new EWLListener(this, config), this);
 		getCommand("ewl").setExecutor(new EWLCommandExecutor(this, config));
 		
-		new RunKickMethod(this, this.getConfig().getBoolean("enabled"));
+		new RunKickMethod(this, config.enabled);
 		
 		/** Check for a new version if it's enabled. */
 		versionCheck();
