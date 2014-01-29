@@ -27,10 +27,11 @@ public class EmergencyWhitelist extends JavaPlugin
 	/** Checks if a new version is available. */
 	public void versionCheck()
 	{
-		@SuppressWarnings("unused")
-		Update update = null;
 		if (config.updateCheck)
-			update = new Update(46809, "72784c134bdbc3c2216591011a29df99fac08239");
+		{
+			@SuppressWarnings("unused")
+			Update update = new Update(46809, "72784c134bdbc3c2216591011a29df99fac08239");
+		}
 		else
 			getLogger().info("Update is disabled");
 	}
