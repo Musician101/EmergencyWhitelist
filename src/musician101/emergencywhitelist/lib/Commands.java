@@ -26,7 +26,7 @@ public class Commands
 		else
 			isEnabled = "Disabled";
 		
-		return new String[]{StringFormatting.PREFIX + "Version " + version + " compiled with Bukkit 1.6.4-R2.0.",
+		return new String[]{StringFormatting.PREFIX + "Version " + version + " compiled with Bukkit 1.7.2-R0.2.",
 				StringFormatting.PREFIX + "Whitelist: " + isEnabled + ".",
 				StringFormatting.PREFIX + "Type /ewl help for a list of commands."};
 	}
