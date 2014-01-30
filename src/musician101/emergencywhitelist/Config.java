@@ -27,9 +27,7 @@ public class Config
 		reloadConfiguration();
 	}
 	
-	/**
-	 * Reloads the server's config file.
-	 */
+	/** Reloads the server's config file. */
 	public void reloadConfiguration()
 	{
 		plugin.reloadConfig();
