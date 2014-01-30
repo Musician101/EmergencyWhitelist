@@ -1,7 +1,5 @@
 package musician101.emergencywhitelist;
 
-import java.io.File;
-
 import musician101.emergencywhitelist.commands.EWLCommandExecutor;
 import musician101.emergencywhitelist.listeners.EWLListener;
 import musician101.emergencywhitelist.util.RunKickMethod;
@@ -18,12 +16,6 @@ public class EmergencyWhitelist extends JavaPlugin
 {
 	Config config;
 	
-	/** Loads the plugin's various configurations and reference files/folders. */
-	public void loadConfiguration()
-	{
-		if (!new File(getDataFolder(), "config.yml").exists()) saveDefaultConfig();
-	}
-	
 	/** Checks if a new version is available. */
 	public void versionCheck()
 	{
@@ -39,7 +31,6 @@ public class EmergencyWhitelist extends JavaPlugin
 	/** Initializes the plugin, checks for the config, and register commands and listeners. */
 	public void onEnable()
 	{
-		loadConfiguration();
 		config = new Config(this);
 	
 		getServer().getPluginManager().registerEvents(new EWLListener(this, config), this);
