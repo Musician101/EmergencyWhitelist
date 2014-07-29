@@ -2,7 +2,6 @@ package musician101.emergencywhitelist.listeners;
 
 import musician101.emergencywhitelist.EmergencyWhitelist;
 import musician101.emergencywhitelist.lib.Commands;
-import musician101.emergencywhitelist.lib.Messages;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,8 +26,8 @@ public class EWLListener implements Listener
 		{
 			if (!player.hasPermission(Commands.WHITELIST_PERM))
 			{
-				event.disallow(Result.KICK_WHITELIST, Messages.WHITELIST_ENABLED);
-				plugin.getLogger().info(Messages.getDisconnectedPlayer(player));
+				event.disallow(Result.KICK_WHITELIST, "EmergencyWhitelist has been enabled.");
+				plugin.getLogger().info(player.getName() + " attempted to connect.");
 			}
 		}
 	}

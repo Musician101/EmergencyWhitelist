@@ -2,7 +2,7 @@ package musician101.emergencywhitelist.lib;
 
 import org.bukkit.ChatColor;
 
-public class StringFormatting
+public class MessageFormatting
 {
 	public static final ChatColor GOLD = ChatColor.GOLD;
 	public static final ChatColor WHITE = ChatColor.WHITE;
