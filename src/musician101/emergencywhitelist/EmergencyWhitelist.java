@@ -2,7 +2,7 @@ package musician101.emergencywhitelist;
 
 import musician101.emergencywhitelist.commands.EWLCommandExecutor;
 import musician101.emergencywhitelist.listeners.EWLListener;
-import musician101.emergencywhitelist.util.RunKickMethod;
+import musician101.emergencywhitelist.util.EWLUtil;
 import musician101.emergencywhitelist.util.Update;
 
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,7 +29,7 @@ public class EmergencyWhitelist extends JavaPlugin
 		getServer().getPluginManager().registerEvents(new EWLListener(this), this);
 		getCommand("ewl").setExecutor(new EWLCommandExecutor(this));
 		
-		new RunKickMethod(this, config.enabled);
+		EWLUtil.kickPlayers(this, config.enabled);
 		
 		versionCheck();
 	}

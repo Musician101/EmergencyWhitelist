@@ -6,9 +6,9 @@ import musician101.emergencywhitelist.runnables.KickPlayers;
 
 import org.bukkit.Bukkit;
 
-public class RunKickMethod 
+public class EWLUtil 
 {
-	public RunKickMethod(EmergencyWhitelist plugin, boolean enabled)
+	public static void kickPlayers(EmergencyWhitelist plugin, boolean enabled)
 	{
 		plugin.getLogger().info(Messages.getWhitelistEnabled(enabled));
 		plugin.getLogger().info(Messages.getToggleMessage(enabled));

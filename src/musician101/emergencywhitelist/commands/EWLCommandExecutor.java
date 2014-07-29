@@ -2,7 +2,7 @@ package musician101.emergencywhitelist.commands;
 
 import musician101.emergencywhitelist.EmergencyWhitelist;
 import musician101.emergencywhitelist.lib.Commands;
-import musician101.emergencywhitelist.util.RunKickMethod;
+import musician101.emergencywhitelist.util.EWLUtil;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -42,7 +42,7 @@ public class EWLCommandExecutor implements CommandExecutor
 				}
 				
 				plugin.reloadConfig();
-				new RunKickMethod(plugin, plugin.config.enabled);
+				EWLUtil.kickPlayers(plugin, plugin.config.enabled);
 				return true;
 			}
 			else if (args[0].equalsIgnoreCase(Commands.TOGGLE_CMD))
@@ -54,7 +54,7 @@ public class EWLCommandExecutor implements CommandExecutor
 				}
 				
 				plugin.config.enabled = !plugin.config.enabled;
-				new RunKickMethod(plugin, plugin.config.enabled);
+				EWLUtil.kickPlayers(plugin, plugin.config.enabled);
 				plugin.getConfig().set("enabled", plugin.config.enabled);
 				plugin.saveConfig();
 				plugin.config.reloadConfiguration();
