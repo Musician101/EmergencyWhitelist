@@ -3,6 +3,7 @@ package musician101.emergencywhitelist.commands;
 import musician101.emergencywhitelist.Config;
 import musician101.emergencywhitelist.EmergencyWhitelist;
 import musician101.emergencywhitelist.lib.Commands;
+import musician101.emergencywhitelist.util.RunKickMethod;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,21 +23,49 @@ public class EWLCommandExecutor implements CommandExecutor
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
 	{
-		if (command.getName().equalsIgnoreCase(Commands.EWL_CMD))
+		if (args.length > 0)
 		{
-			if (args.length == 0)
-				sender.sendMessage(Commands.getEWLText(config.enabled, plugin.getDescription().getVersion()));
-			else if (args.length > 0)
+			if (args[0].equalsIgnoreCase(Commands.HELP_CMD))
 			{
-				if (args[0].equalsIgnoreCase(Commands.HELP_CMD))
-					return HelpCommand.execute(plugin, sender);
-				else if (args[0].equalsIgnoreCase(Commands.RELOAD_CMD))
-					return ReloadCommand.execute(plugin, sender, config.enabled);
-				else if (args[0].equalsIgnoreCase(Commands.TOGGLE_CMD))
-					return ToggleCommand.execute(plugin, sender, config);
+				if (!sender.hasPermission(Commands.HELP_PERM))
+				{
+					sender.sendMessage(Commands.NO_PERMISSION);
+					return false;
+				}
+				
+				sender.sendMessage(Commands.HELP_TEXT);
+				return true;
 			}
-			return true;
+			else if (args[0].equalsIgnoreCase(Commands.RELOAD_CMD))
+			{
+				if (!sender.hasPermission(Commands.RELOAD_PERM))
+				{
+					sender.sendMessage(Commands.NO_PERMISSION);
+					return false;
+				}
+				
+				plugin.reloadConfig();
+				new RunKickMethod(plugin, config.enabled);
+				return true;
+			}
+			else if (args[0].equalsIgnoreCase(Commands.TOGGLE_CMD))
+			{
+				if (!sender.hasPermission(Commands.TOGGLE_PERM))
+				{
+					sender.sendMessage(Commands.NO_PERMISSION);
+					return false;
+				}
+				
+				config.enabled = !config.enabled;
+				new RunKickMethod(plugin, config.enabled);
+				plugin.getConfig().set("enabled", config.enabled);
+				plugin.saveConfig();
+				config.reloadConfiguration();
+				return true;
+			}
 		}
-		return false;
+		
+		sender.sendMessage(Commands.getEWLText(config.enabled, plugin.getDescription().getVersion()));
+		return true;
 	}
 }
