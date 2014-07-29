@@ -1,6 +1,5 @@
 package musician101.emergencywhitelist.listeners;
 
-import musician101.emergencywhitelist.Config;
 import musician101.emergencywhitelist.EmergencyWhitelist;
 import musician101.emergencywhitelist.lib.Commands;
 import musician101.emergencywhitelist.lib.Messages;
@@ -14,19 +13,17 @@ import org.bukkit.event.player.PlayerLoginEvent.Result;
 public class EWLListener implements Listener
 {
 	EmergencyWhitelist plugin;
-	Config config;
 	
-	public EWLListener(EmergencyWhitelist plugin, Config config)
+	public EWLListener(EmergencyWhitelist plugin)
 	{
 		this.plugin = plugin;
-		this.config = config;
 	}
 	
 	@EventHandler
 	public void onPlayerLogin(PlayerLoginEvent event)
 	{
 		Player player = event.getPlayer();
-		if (config.enabled)
+		if (plugin.config.enabled)
 		{
 			if (!player.hasPermission(Commands.WHITELIST_PERM))
 			{

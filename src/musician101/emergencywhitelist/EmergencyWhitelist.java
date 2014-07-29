@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class EmergencyWhitelist extends JavaPlugin
 {
-	Config config;
+	public Config config;
 	//TODO update version checker class
 	public void versionCheck()
 	{
@@ -26,8 +26,8 @@ public class EmergencyWhitelist extends JavaPlugin
 	{
 		config = new Config(this);
 	
-		getServer().getPluginManager().registerEvents(new EWLListener(this, config), this);
-		getCommand("ewl").setExecutor(new EWLCommandExecutor(this, config));
+		getServer().getPluginManager().registerEvents(new EWLListener(this), this);
+		getCommand("ewl").setExecutor(new EWLCommandExecutor(this));
 		
 		new RunKickMethod(this, config.enabled);
 		

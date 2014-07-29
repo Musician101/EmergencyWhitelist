@@ -1,6 +1,5 @@
 package musician101.emergencywhitelist.commands;
 
-import musician101.emergencywhitelist.Config;
 import musician101.emergencywhitelist.EmergencyWhitelist;
 import musician101.emergencywhitelist.lib.Commands;
 import musician101.emergencywhitelist.util.RunKickMethod;
@@ -12,12 +11,10 @@ import org.bukkit.command.CommandSender;
 public class EWLCommandExecutor implements CommandExecutor
 {
 	EmergencyWhitelist plugin;
-	Config config;
 	
-	public EWLCommandExecutor(EmergencyWhitelist plugin, Config config)
+	public EWLCommandExecutor(EmergencyWhitelist plugin)
 	{
 		this.plugin = plugin;
-		this.config = config;
 	}
 	
 	@Override
@@ -45,7 +42,7 @@ public class EWLCommandExecutor implements CommandExecutor
 				}
 				
 				plugin.reloadConfig();
-				new RunKickMethod(plugin, config.enabled);
+				new RunKickMethod(plugin, plugin.config.enabled);
 				return true;
 			}
 			else if (args[0].equalsIgnoreCase(Commands.TOGGLE_CMD))
@@ -56,16 +53,16 @@ public class EWLCommandExecutor implements CommandExecutor
 					return false;
 				}
 				
-				config.enabled = !config.enabled;
-				new RunKickMethod(plugin, config.enabled);
-				plugin.getConfig().set("enabled", config.enabled);
+				plugin.config.enabled = !plugin.config.enabled;
+				new RunKickMethod(plugin, plugin.config.enabled);
+				plugin.getConfig().set("enabled", plugin.config.enabled);
 				plugin.saveConfig();
-				config.reloadConfiguration();
+				plugin.config.reloadConfiguration();
 				return true;
 			}
 		}
 		
-		sender.sendMessage(Commands.getEWLText(config.enabled, plugin.getDescription().getVersion()));
+		sender.sendMessage(Commands.getEWLText(plugin.config.enabled, plugin.getDescription().getVersion()));
 		return true;
 	}
 }
