@@ -10,11 +10,6 @@ public class Config
 	public boolean enabled;
 	public boolean updateCheck;
 	
-	/**
-	 * Config constructor.
-	 * 
-	 * @param plugin Reference's the plugin's main class.
-	 */
 	public Config(EmergencyWhitelist plugin)
 	{
 		this.plugin = plugin;
@@ -27,7 +22,6 @@ public class Config
 		reloadConfiguration();
 	}
 	
-	/** Reloads the server's config file. */
 	public void reloadConfiguration()
 	{
 		plugin.reloadConfig();

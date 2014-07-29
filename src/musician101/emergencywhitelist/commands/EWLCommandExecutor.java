@@ -8,32 +8,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-/**
- * The code used to run when any command in the plugin is executed.
- * 
- * @author Musician101
- */
 public class EWLCommandExecutor implements CommandExecutor
 {
 	EmergencyWhitelist plugin;
 	Config config;
 	
-	/**
-	 * @param plugin References the plugin's main class.
-	 */
 	public EWLCommandExecutor(EmergencyWhitelist plugin, Config config)
 	{
 		this.plugin = plugin;
 		this.config = config;
 	}
 	
-	/**
-	 * @param sender Who sent the command.
-	 * @param command Which command was executed
-	 * @param label Alias of the command
-	 * @param args Command parameters
-	 * @return True if the command was successfully executed
-	 */
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
 	{

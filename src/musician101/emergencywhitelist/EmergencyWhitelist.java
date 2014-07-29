@@ -7,16 +7,10 @@ import musician101.emergencywhitelist.util.Update;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- * The plugin's main class.
- * 
- * @author Musician101
- */
 public class EmergencyWhitelist extends JavaPlugin
 {
 	Config config;
-	
-	/** Checks if a new version is available. */
+	//TODO update version checker class
 	public void versionCheck()
 	{
 		if (config.updateCheck)
@@ -28,7 +22,6 @@ public class EmergencyWhitelist extends JavaPlugin
 			getLogger().info("Update is disabled");
 	}
 	
-	/** Initializes the plugin, checks for the config, and register commands and listeners. */
 	public void onEnable()
 	{
 		config = new Config(this);
@@ -38,11 +31,9 @@ public class EmergencyWhitelist extends JavaPlugin
 		
 		new RunKickMethod(this, config.enabled);
 		
-		/** Check for a new version if it's enabled. */
 		versionCheck();
 	}
 	
-	/** Shuts off the plugin. */
 	public void onDisable()
 	{
 		getLogger().info("Shutting down.");
