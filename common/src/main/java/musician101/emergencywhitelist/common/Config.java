@@ -11,13 +11,13 @@ public abstract class Config
 
     public abstract void reloadConfiguration();
 
-    public void setWhitelistEnabled(boolean enabled)
-    {
-        this.enabled = enabled;
-    }
-
     public boolean isWhitelistEnabled()
     {
         return enabled;
+    }
+
+    public void setWhitelistEnabled(boolean enabled)
+    {
+        this.enabled = enabled;
     }
 }

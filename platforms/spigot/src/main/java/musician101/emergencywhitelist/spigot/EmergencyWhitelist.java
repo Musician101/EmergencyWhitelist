@@ -16,12 +16,12 @@ import java.util.List;
 
 public class EmergencyWhitelist extends JavaPlugin
 {
-	private SpigotConfig config;
+    private SpigotConfig config;
     private List<AbstractSpigotCommand> commands;
 
     private void versionCheck()
-	{
-		if (config.isUpdateCheckEnabled())
+    {
+        if (config.isUpdateCheckEnabled())
         {
             Updater updater = new Updater(this, 46809, this.getFile(), UpdateType.NO_DOWNLOAD, true);
             if (updater.getResult() == UpdateResult.NO_UPDATE)
@@ -35,46 +35,46 @@ public class EmergencyWhitelist extends JavaPlugin
             }
             else
                 getLogger().info("An error occurred while attempting to check for updates");
-		}
-		else
-			getLogger().info("Update is disabled");
-	}
+        }
+        else
+            getLogger().info("Update is disabled");
+    }
 
-	@Override
-	public void onEnable()
-	{
-		config = new SpigotConfig(this);
-	
-		getServer().getPluginManager().registerEvents(new EWLListener(this), this);
+    @Override
+    public void onEnable()
+    {
+        config = new SpigotConfig(this);
+
+        getServer().getPluginManager().registerEvents(new EWLListener(this), this);
         commands = Collections.singletonList(new EWLCommand(this));
 
         KickPlayers.kickPlayers(this, config.isWhitelistEnabled());
-		
-		versionCheck();
-	}
 
-	@Override
-	public void onDisable()
-	{
-		getLogger().info("Shutting down.");
-	}
+        versionCheck();
+    }
 
-	@Override
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
-	{
-		for (AbstractSpigotCommand cmd : commands)
+    @Override
+    public void onDisable()
+    {
+        getLogger().info("Shutting down.");
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
+    {
+        for (AbstractSpigotCommand cmd : commands)
             if (command.getName().equalsIgnoreCase(cmd.getName()))
                 return cmd.onCommand(sender, args);
 
-		return false;
-	}
+        return false;
+    }
 
     public SpigotConfig getPluginConfig()
     {
         return config;
     }
 
-	public List<AbstractSpigotCommand> getCommands()
+    public List<AbstractSpigotCommand> getCommands()
     {
         return commands;
     }

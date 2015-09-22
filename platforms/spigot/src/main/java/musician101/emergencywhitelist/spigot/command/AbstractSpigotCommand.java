@@ -30,6 +30,18 @@ public abstract class AbstractSpigotCommand extends AbstractCommand
         this.subCommands = subCommands;
     }
 
+    private static String parseUsage(List<String> usageList)
+    {
+        String usage = ChatColor.GRAY + usageList.get(0);
+        if (usageList.size() > 1)
+            usage = usage + " " + ChatColor.RESET + usageList.get(1);
+
+        if (usageList.size() > 2)
+            usage = usage + " " + ChatColor.DARK_RED + usageList.get(2);
+
+        return usage;
+    }
+
     protected List<AbstractSpigotCommand> getSubCommands()
     {
         return subCommands;
@@ -71,17 +83,5 @@ public abstract class AbstractSpigotCommand extends AbstractCommand
     public boolean onCommand(CommandSender sender, String... args)
     {
         return canSenderUseCommand(sender) || args.length >= getMinArgs();
-    }
-
-    private static String parseUsage(List<String> usageList)
-    {
-        String usage = ChatColor.GRAY + usageList.get(0);
-        if (usageList.size() > 1)
-            usage = usage + " " + ChatColor.RESET + usageList.get(1);
-
-        if (usageList.size() > 2)
-            usage = usage + " " + ChatColor.DARK_RED + usageList.get(2);
-
-        return usage;
     }
 }
