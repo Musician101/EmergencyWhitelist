@@ -31,4 +31,4 @@ permissions:
       description: Allows user/group to toggle the whitelist on or off.
    ewl.whitelist:
       default: op
-      description: Whitelists user/group for entry onto the server when the whitelist is enabled. 
+      description: Whitelists user/group for entry onto the server when the whitelist is enabled.
