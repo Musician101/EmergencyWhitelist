@@ -1,10 +1,10 @@
 package musician101.emergencywhitelist.common;
 
-public abstract class Config
+public abstract class AbstractConfig
 {
     private boolean enabled;
 
-    protected Config()
+    protected AbstractConfig()
     {
 
     }

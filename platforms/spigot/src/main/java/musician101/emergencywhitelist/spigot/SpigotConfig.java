@@ -1,12 +1,12 @@
 package musician101.emergencywhitelist.spigot;
 
-import musician101.emergencywhitelist.common.Config;
+import musician101.emergencywhitelist.common.AbstractConfig;
 import musician101.emergencywhitelist.spigot.util.KickPlayers;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
 
-public class SpigotConfig extends Config
+public class SpigotConfig extends AbstractConfig
 {
     private final EmergencyWhitelist plugin;
     private boolean updateCheck;
