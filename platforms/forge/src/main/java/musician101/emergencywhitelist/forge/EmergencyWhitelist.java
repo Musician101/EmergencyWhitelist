@@ -1,11 +1,11 @@
 package musician101.emergencywhitelist.forge;
 
-
 import musician101.common.java.minecraft.forge.AbstractForgeCommand;
 import musician101.emergencywhitelist.forge.command.ewl.EWLCommand;
 import musician101.emergencywhitelist.forge.lib.ModInfo;
 import musician101.emergencywhitelist.forge.listener.EWLListener;
 import musician101.emergencywhitelist.forge.util.KickPlayers;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -30,14 +30,10 @@ public class EmergencyWhitelist
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        //TODO might need to just set up init as a static method
         config = new ForgeConfig();
         config.init(event.getModConfigurationDirectory());
 
-        getServer().getPluginManager().registerEvents(new EWLListener(), this);
-
-        KickPlayers.kickPlayers(config.isWhitelistEnabled());
-
+        FMLCommonHandler.instance().bus().register(new EWLListener());
         logger.info("Pre-Init complete.");
     }
 

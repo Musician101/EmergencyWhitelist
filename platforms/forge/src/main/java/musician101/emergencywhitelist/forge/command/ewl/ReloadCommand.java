@@ -1,25 +1,24 @@
 package musician101.emergencywhitelist.forge.command.ewl;
 
-import musician101.emergencywhitelist.spigot.EmergencyWhitelist;
-import musician101.emergencywhitelist.spigot.command.AbstractSpigotCommand;
-import org.bukkit.command.CommandSender;
+import musician101.common.java.minecraft.forge.AbstractForgeCommand;
+import musician101.emergencywhitelist.forge.EmergencyWhitelist;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.util.ChatComponentText;
 
-import java.util.Arrays;
-
-public class ReloadCommand extends AbstractSpigotCommand
+public class ReloadCommand extends AbstractForgeCommand
 {
-    public ReloadCommand(EmergencyWhitelist plugin)
+    public ReloadCommand()
     {
-        super(plugin, "reload", "Reload the plugins configuration.", Arrays.asList("/ewl", "reload"), 0, "ewl.reload");
+        super("reload", "Reload the plugins configuration.", "/ewl reload", 0, false);
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, String... args)
+    public void execute(ICommandSender sender, String... args)
     {
-        if (!super.onCommand(sender, args))
-            return false;
+        if (!canCommandSenderUse(sender))
+            return;
 
-        plugin.getPluginConfig().reloadConfiguration();
-        return true;
+        EmergencyWhitelist.config.reloadConfiguration();
+        sender.addChatMessage(new ChatComponentText("[EWL] Config reloaded."));
     }
 }

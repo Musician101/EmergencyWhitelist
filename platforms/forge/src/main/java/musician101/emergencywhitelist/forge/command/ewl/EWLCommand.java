@@ -12,7 +12,7 @@ public class EWLCommand extends AbstractForgeCommand
 {
     public EWLCommand()
     {
-        super("ewl", "Secondary whitelisting for server admins.", "/ewl", 0, "ewl", Arrays.asList(new ReloadCommand(), new ToggleCommand()));
+        super("ewl", "Secondary whitelisting for server admins.", "/ewl", 0, false, Arrays.asList(new ReloadCommand(), new ToggleCommand()));
     }
 
     @Override
@@ -21,7 +21,10 @@ public class EWLCommand extends AbstractForgeCommand
         if (args.length > 0)
         {
             if (args[0].equalsIgnoreCase("help"))
-                return new HelpCommand(this).execute(sender, moveArguments(args));
+            {
+                new HelpCommand(sender, this).execute(sender, moveArguments(args));
+                return;
+            }
 
             for (AbstractForgeCommand command : getSubCommands())
             {
@@ -29,7 +32,7 @@ public class EWLCommand extends AbstractForgeCommand
                 {
                     try
                     {
-                        command.execute(sender, args);
+                        command.execute(sender, moveArguments(args));
                     }
                     catch (CommandException e)
                     {
@@ -43,7 +46,7 @@ public class EWLCommand extends AbstractForgeCommand
 
         EmergencyWhitelist.commands.forEach(command -> {
             if (command.getName().equalsIgnoreCase(args[0]))
-                sender.addChatMessage(new HelpCommand(command).getCommandHelpInfo());
+                sender.addChatMessage(new HelpCommand(sender, command).getCommandHelpInfo());
         });
     }
 }
