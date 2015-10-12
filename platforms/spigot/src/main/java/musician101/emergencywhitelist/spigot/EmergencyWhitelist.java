@@ -1,6 +1,6 @@
 package musician101.emergencywhitelist.spigot;
 
-import musician101.emergencywhitelist.spigot.command.AbstractSpigotCommand;
+import musician101.common.java.minecraft.spigot.command.AbstractSpigotCommand;
 import musician101.emergencywhitelist.spigot.command.ewl.EWLCommand;
 import musician101.emergencywhitelist.spigot.listener.EWLListener;
 import musician101.emergencywhitelist.spigot.util.KickPlayers;

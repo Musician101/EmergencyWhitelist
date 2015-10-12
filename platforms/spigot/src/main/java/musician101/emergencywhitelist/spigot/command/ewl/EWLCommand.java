@@ -1,19 +1,22 @@
 package musician101.emergencywhitelist.spigot.command.ewl;
 
-import musician101.emergencywhitelist.spigot.EmergencyWhitelist;
-import musician101.emergencywhitelist.spigot.command.AbstractSpigotCommand;
-import musician101.emergencywhitelist.spigot.command.HelpCommand;
-import org.bukkit.command.CommandSender;
-
 import java.util.Arrays;
 import java.util.Collections;
+import musician101.common.java.minecraft.spigot.command.AbstractSpigotCommand;
+import musician101.common.java.minecraft.spigot.command.CommandArgument;
+import musician101.emergencywhitelist.spigot.EmergencyWhitelist;
+import musician101.emergencywhitelist.spigot.command.HelpCommand;
+import musician101.emergencywhitelist.spigot.lib.Messages;
+import org.bukkit.command.CommandSender;
 
 public class EWLCommand extends AbstractSpigotCommand
 {
+    EmergencyWhitelist plugin;
 
     public EWLCommand(EmergencyWhitelist plugin)
     {
-        super(plugin, "ewl", "Secondary whitelisting for server admins.", Collections.singletonList("/ewl"), 0, "ewl", Arrays.asList(new ReloadCommand(plugin), new ToggleCommand(plugin)));
+        super("ewl", "Secondary whitelisting for server admins.", Collections.singletonList(new CommandArgument("/ewl")), 0, "ewl", false, Messages.NO_PERMISSION, Messages.PLAYER_CMD, Arrays.asList(new ReloadCommand(plugin), new ToggleCommand(plugin)));
+        this.plugin = plugin;
     }
 
     @Override
