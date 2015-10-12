@@ -3,7 +3,7 @@ main: musician101.emergencywhitelist.EmergencyWhitelist
 version: 2.0
 description: Secondary whitelisting for server admins.
 authors: [Musician101]
-maintainter: Musician101
+maintainer: Musician101
 
 commands:
     ewl:

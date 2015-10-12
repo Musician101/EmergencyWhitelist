@@ -1,5 +1,7 @@
 package musician101.emergencywhitelist.spigot;
 
+import java.util.Collections;
+import java.util.List;
 import musician101.common.java.minecraft.spigot.command.AbstractSpigotCommand;
 import musician101.emergencywhitelist.spigot.command.ewl.EWLCommand;
 import musician101.emergencywhitelist.spigot.listener.EWLListener;
@@ -11,10 +13,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Collections;
-import java.util.List;
-
-public class EmergencyWhitelist extends JavaPlugin
+public class SpigotEmergencyWhitelist extends JavaPlugin
 {
     private SpigotConfig config;
     private List<AbstractSpigotCommand> commands;

@@ -1,6 +1,6 @@
 package musician101.emergencywhitelist.spigot.util;
 
-import musician101.emergencywhitelist.spigot.EmergencyWhitelist;
+import musician101.emergencywhitelist.spigot.SpigotEmergencyWhitelist;
 import musician101.emergencywhitelist.spigot.lib.Messages;
 import org.bukkit.Bukkit;
 
@@ -11,7 +11,7 @@ public class KickPlayers implements Runnable
 
     }
 
-    public static void kickPlayers(EmergencyWhitelist plugin, boolean enabled)
+    public static void kickPlayers(SpigotEmergencyWhitelist plugin, boolean enabled)
     {
         if (enabled)
         {

@@ -3,15 +3,16 @@ package musician101.emergencywhitelist.spigot.command.ewl;
 import java.util.Arrays;
 import musician101.common.java.minecraft.spigot.command.AbstractSpigotCommand;
 import musician101.common.java.minecraft.spigot.command.CommandArgument;
-import musician101.emergencywhitelist.spigot.EmergencyWhitelist;
+import musician101.emergencywhitelist.spigot.SpigotEmergencyWhitelist;
 import musician101.emergencywhitelist.spigot.lib.Messages;
 import org.bukkit.command.CommandSender;
 
+@SuppressWarnings("WeakerAccess")
 public class ReloadCommand extends AbstractSpigotCommand
 {
-    EmergencyWhitelist plugin;
+    private final SpigotEmergencyWhitelist plugin;
 
-    public ReloadCommand(EmergencyWhitelist plugin)
+    public ReloadCommand(SpigotEmergencyWhitelist plugin)
     {
         super("reload", "Reload the plugins configuration.", Arrays.asList(new CommandArgument("/ewl"), new CommandArgument("reload")), 0, "ewl.reload", false, Messages.NO_PERMISSION, Messages.PLAYER_CMD);
         this.plugin = plugin;

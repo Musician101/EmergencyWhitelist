@@ -50,9 +50,11 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <minimizeJar>true</minimizeJar>
                             <artifactSet>
                                 <includes>
                                     <include>musician101.emergencywhitelist:common</include>
+                                    <include>musician101:common</include>
                                 </includes>
                             </artifactSet>
                         </configuration>

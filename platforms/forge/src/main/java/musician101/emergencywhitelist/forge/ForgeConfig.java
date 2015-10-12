@@ -2,6 +2,7 @@ package musician101.emergencywhitelist.forge;
 
 import com.google.gson.Gson;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,17 +12,14 @@ import musician101.emergencywhitelist.common.AbstractConfig;
 import musician101.emergencywhitelist.forge.lib.ModInfo;
 import musician101.emergencywhitelist.forge.util.EWLGameProfileList;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 
-import java.io.File;
-
 public class ForgeConfig extends AbstractConfig
 {
+    private static Configuration config;
+    private final List<UUID> uuids = new ArrayList<>();
     public File configDir;
-    public static Configuration config;
-    List<UUID> uuids = new ArrayList<>();
 
     public ForgeConfig()
     {
@@ -45,10 +43,9 @@ public class ForgeConfig extends AbstractConfig
             Gson gson = new Gson();
             EWLGameProfileList list = gson.fromJson(r.readLine(), EWLGameProfileList.class);
             list.getList().forEach(profile -> uuids.add(profile.getUUID()));
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
-            EmergencyWhitelist.logger.warn("An error occurred while loading the whitelist.");
+            ForgeEmergencyWhitelist.logger.warn("An error occurred while loading the whitelist.");
         }
     }
 
@@ -68,6 +65,7 @@ public class ForgeConfig extends AbstractConfig
             reloadConfiguration();
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean hasPermission(UUID playerId)
     {
         return uuids.contains(playerId);

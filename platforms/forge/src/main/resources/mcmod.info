@@ -1,0 +1,13 @@
+[
+  {
+    "modid": "ewl",
+    "name": "Emergency Whitelist",
+    "description": "${project.description}",
+    "version": "${project.version}",
+    "mcVersion": "1.8",
+    "url": "https://github.com/musician101/emergencywhitelist",
+    "authorList": [
+      "Musician101"
+    ]
+  }
+]

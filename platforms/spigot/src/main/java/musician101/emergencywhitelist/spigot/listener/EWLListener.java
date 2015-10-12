@@ -1,6 +1,6 @@
 package musician101.emergencywhitelist.spigot.listener;
 
-import musician101.emergencywhitelist.spigot.EmergencyWhitelist;
+import musician101.emergencywhitelist.spigot.SpigotEmergencyWhitelist;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,9 +9,9 @@ import org.bukkit.event.player.PlayerLoginEvent.Result;
 
 public class EWLListener implements Listener
 {
-    private final EmergencyWhitelist plugin;
+    private final SpigotEmergencyWhitelist plugin;
 
-    public EWLListener(EmergencyWhitelist plugin)
+    public EWLListener(SpigotEmergencyWhitelist plugin)
     {
         this.plugin = plugin;
     }

@@ -1,10 +1,11 @@
 package musician101.emergencywhitelist.forge.command.ewl;
 
-import musician101.common.java.minecraft.forge.AbstractForgeCommand;
-import musician101.emergencywhitelist.forge.EmergencyWhitelist;
+import musician101.common.java.minecraft.forge.command.AbstractForgeCommand;
+import musician101.emergencywhitelist.forge.ForgeEmergencyWhitelist;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 
+@SuppressWarnings("WeakerAccess")
 public class ReloadCommand extends AbstractForgeCommand
 {
     public ReloadCommand()
@@ -18,7 +19,7 @@ public class ReloadCommand extends AbstractForgeCommand
         if (!canCommandSenderUse(sender))
             return;
 
-        EmergencyWhitelist.config.reloadConfiguration();
+        ForgeEmergencyWhitelist.config.reloadConfiguration();
         sender.addChatMessage(new ChatComponentText("[EWL] Config reloaded."));
     }
 }

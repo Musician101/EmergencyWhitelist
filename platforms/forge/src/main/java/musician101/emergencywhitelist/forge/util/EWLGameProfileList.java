@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class EWLGameProfileList
 {
-    List<EWLGameProfile> list;
+    private List<EWLGameProfile> list;
 
     public List<EWLGameProfile> getList()
     {
@@ -14,8 +14,8 @@ public class EWLGameProfileList
 
     public class EWLGameProfile
     {
-        UUID uuid;
-        String username;
+        final UUID uuid;
+        final String username;
 
         public EWLGameProfile(UUID uuid, String username)
         {

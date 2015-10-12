@@ -1,10 +1,11 @@
 package musician101.emergencywhitelist.forge;
 
-import musician101.common.java.minecraft.forge.AbstractForgeCommand;
+import java.util.Collections;
+import java.util.List;
+import musician101.common.java.minecraft.forge.command.AbstractForgeCommand;
 import musician101.emergencywhitelist.forge.command.ewl.EWLCommand;
 import musician101.emergencywhitelist.forge.lib.ModInfo;
 import musician101.emergencywhitelist.forge.listener.EWLListener;
-import musician101.emergencywhitelist.forge.util.KickPlayers;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -14,17 +15,13 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Collections;
-import java.util.List;
-
-@Mod(modid=ModInfo.ID, name=ModInfo.NAME, version=ModInfo.VERSION, serverSideOnly=true)
-public class EmergencyWhitelist
+@Mod(modid = ModInfo.ID, name = ModInfo.NAME, version = ModInfo.VERSION, serverSideOnly = true)
+public class ForgeEmergencyWhitelist
 {
-    @Instance(value=ModInfo.ID)
-    public static EmergencyWhitelist instance;
-
+    public static final Logger logger = LogManager.getLogger(ModInfo.NAME);
+    @Instance(value = ModInfo.ID)
+    public static ForgeEmergencyWhitelist instance;
     public static ForgeConfig config;
-    public static Logger logger = LogManager.getLogger(ModInfo.NAME);
     public static List<AbstractForgeCommand> commands;
 
     @EventHandler
