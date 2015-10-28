@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import musician101.common.java.minecraft.spigot.command.AbstractSpigotCommand;
 import musician101.common.java.minecraft.spigot.command.CommandArgument;
+import musician101.emergencywhitelist.common.CommonReference;
+import musician101.emergencywhitelist.common.CommonReference.CommonCommands;
 import musician101.emergencywhitelist.spigot.SpigotEmergencyWhitelist;
 import musician101.emergencywhitelist.spigot.command.HelpCommand;
 import musician101.emergencywhitelist.spigot.lib.Messages;
@@ -15,7 +17,7 @@ public class EWLCommand extends AbstractSpigotCommand
 
     public EWLCommand(SpigotEmergencyWhitelist plugin)
     {
-        super("ewl", "Secondary whitelisting for server admins.", Collections.singletonList(new CommandArgument("/ewl")), 0, "ewl", false, Messages.NO_PERMISSION, Messages.PLAYER_CMD, Arrays.asList(new ReloadCommand(plugin), new ToggleCommand(plugin)));
+        super(CommonReference.ID, CommonCommands.EWL_DESC, Collections.singletonList(new CommandArgument("/ewl")), 0, "ewl", false, Messages.NO_PERMISSION, Messages.PLAYER_CMD, Arrays.asList(new ReloadCommand(plugin), new ToggleCommand(plugin)));
         this.plugin = plugin;
     }
 
@@ -25,7 +27,7 @@ public class EWLCommand extends AbstractSpigotCommand
         if (args.length > 0)
         {
             if (args[0].equalsIgnoreCase("help"))
-                return new HelpCommand(plugin, this).onCommand(sender, moveArguments(args));
+                return new SpigotHelpCommand(plugin, this).onCommand(sender, moveArguments(args));
 
             for (AbstractSpigotCommand command : getSubCommands())
                 if (command.getName().equalsIgnoreCase(args[0]))
