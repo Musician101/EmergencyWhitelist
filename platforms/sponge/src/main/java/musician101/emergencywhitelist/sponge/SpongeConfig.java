@@ -29,7 +29,7 @@ public class SpongeConfig extends AbstractConfig
         super();
         Game game = SpongeEmergencyWhitelist.game;
         ConfigRoot cr = game.getServiceManager().provide(ConfigService.class).get().getSharedConfig(game.getPluginManager().getPlugin(Reference.ID).get());
-        configFile = new File(cr.getDirectory(), "emergency_whitelist.json");
+        configFile = new File(cr.getDirectory().toFile(), "emergency_whitelist.json");
         reloadConfiguration();
     }
 

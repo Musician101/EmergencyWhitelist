@@ -2,7 +2,7 @@ package musician101.emergencywhitelist.spigot.command.ewl;
 
 import java.util.Arrays;
 import musician101.common.java.minecraft.spigot.command.AbstractSpigotCommand;
-import musician101.common.java.minecraft.spigot.command.CommandArgument;
+import musician101.common.java.minecraft.spigot.command.SpigotCommandArgument;
 import musician101.emergencywhitelist.common.CommonReference.CommonCommands;
 import musician101.emergencywhitelist.common.CommonReference.CommonConfig;
 import musician101.emergencywhitelist.common.CommonReference.Permissions;
@@ -17,7 +17,7 @@ public class ToggleCommand extends AbstractSpigotCommand
 
     public ToggleCommand(SpigotEmergencyWhitelist plugin)
     {
-        super(CommonCommands.TOGGLE_NAME, CommonCommands.TOGGLE_DESC, Arrays.asList(new CommandArgument(CommonCommands.EWL_CMD), new CommandArgument(CommonCommands.TOGGLE_NAME)), 0, Permissions.TOGGLE_PERM, false, Messages.NO_PERMISSION, Messages.PLAYER_CMD);
+        super(CommonCommands.TOGGLE_NAME, CommonCommands.TOGGLE_DESC, Arrays.asList(new SpigotCommandArgument(CommonCommands.EWL_CMD), new SpigotCommandArgument(CommonCommands.TOGGLE_NAME)), 0, Permissions.TOGGLE_PERM, false, Messages.NO_PERMISSION, Messages.PLAYER_CMD);
         this.plugin = plugin;
     }
 
