@@ -1,6 +1,5 @@
 package musician101.emergencywhitelist.common;
 
-@SuppressWarnings("WeakerAccess")
 public abstract class AbstractConfig
 {
     private boolean enabled;

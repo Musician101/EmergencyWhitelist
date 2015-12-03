@@ -3,7 +3,7 @@ package musician101.emergencywhitelist.spigot;
 import java.util.Collections;
 import java.util.List;
 import musician101.common.java.minecraft.spigot.command.AbstractSpigotCommand;
-import musician101.emergencywhitelist.spigot.command.ewl.EWLCommand;
+import musician101.emergencywhitelist.spigot.command.EWLCommand;
 import musician101.emergencywhitelist.spigot.listener.EWLListener;
 import musician101.emergencywhitelist.spigot.util.KickPlayers;
 import net.gravitydevelopment.updater.Updater;

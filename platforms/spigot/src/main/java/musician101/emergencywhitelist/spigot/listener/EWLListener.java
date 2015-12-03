@@ -1,5 +1,7 @@
 package musician101.emergencywhitelist.spigot.listener;
 
+import musician101.emergencywhitelist.common.Reference.Messages;
+import musician101.emergencywhitelist.common.Reference.Permissions;
 import musician101.emergencywhitelist.spigot.SpigotEmergencyWhitelist;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,10 +24,10 @@ public class EWLListener implements Listener
         Player player = event.getPlayer();
         if (plugin.getPluginConfig().isWhitelistEnabled())
         {
-            if (!player.hasPermission("ewl.whitelist"))
+            if (!player.hasPermission(Permissions.WHITELIST))
             {
-                event.disallow(Result.KICK_WHITELIST, "EmergencyWhitelist has been enabled.");
-                plugin.getLogger().info(player.getName() + " attempted to connect.");
+                event.disallow(Result.KICK_WHITELIST, Messages.WHITELIST_ENABLED);
+                plugin.getLogger().info(Messages.playerConnectAttempt(player.getName()));
             }
         }
     }

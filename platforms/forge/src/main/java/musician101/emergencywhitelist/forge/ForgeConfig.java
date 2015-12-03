@@ -65,7 +65,6 @@ public class ForgeConfig extends AbstractConfig
             reloadConfiguration();
     }
 
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean hasPermission(UUID playerId)
     {
         return uuids.contains(playerId);

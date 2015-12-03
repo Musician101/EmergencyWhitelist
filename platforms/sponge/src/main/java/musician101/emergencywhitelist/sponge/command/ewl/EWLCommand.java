@@ -5,8 +5,8 @@ import javax.annotation.Nonnull;
 import musician101.common.java.minecraft.sponge.command.AbstractSpongeCommand;
 import musician101.common.java.minecraft.sponge.command.SpongeCommandArgument;
 import musician101.common.java.minecraft.sponge.command.SpongeHelpCommand;
-import musician101.emergencywhitelist.common.CommonReference;
-import musician101.emergencywhitelist.common.CommonReference.CommonCommands;
+import musician101.emergencywhitelist.common.Reference;
+import musician101.emergencywhitelist.common.Reference.Commands;
 import org.spongepowered.api.text.Texts;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.util.command.CommandException;
@@ -17,7 +17,7 @@ public class EWLCommand extends AbstractSpongeCommand
 {
     public EWLCommand()
     {
-        super(CommonReference.ID, Texts.builder(CommonCommands.EWL_DESC).color(TextColors.GOLD).build(), Collections.singletonList(new SpongeCommandArgument("/" + CommonReference.ID)), 0, "", false, null, null, null);
+        super(Reference.ID, Texts.builder(Commands.EWL_DESC).color(TextColors.GOLD).build(), Collections.singletonList(new SpongeCommandArgument(Commands.EWL_CMD)), 0, "", false, null, null, null);
     }
 
     @Nonnull
@@ -27,7 +27,7 @@ public class EWLCommand extends AbstractSpongeCommand
         String[] args = splitArgs(arguments);
         if (args.length > 0)
         {
-            if (args[0].equalsIgnoreCase("help"))
+            if (args[0].equalsIgnoreCase(Commands.HELP))
                 return new SpongeHelpCommand(this, source).process(source, moveArguments(args));
 
             for (AbstractSpongeCommand command : getSubCommands())

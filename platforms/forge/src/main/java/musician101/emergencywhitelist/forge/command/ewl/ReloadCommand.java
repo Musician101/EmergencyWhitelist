@@ -5,7 +5,6 @@ import musician101.emergencywhitelist.forge.ForgeEmergencyWhitelist;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 
-@SuppressWarnings("WeakerAccess")
 public class ReloadCommand extends AbstractForgeCommand
 {
     public ReloadCommand()

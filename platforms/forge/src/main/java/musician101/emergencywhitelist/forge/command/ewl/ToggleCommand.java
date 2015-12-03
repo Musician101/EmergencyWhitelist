@@ -14,7 +14,6 @@ import musician101.emergencywhitelist.forge.util.KickPlayers;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 
-@SuppressWarnings("WeakerAccess")
 public class ToggleCommand extends AbstractForgeCommand
 {
     public ToggleCommand()
