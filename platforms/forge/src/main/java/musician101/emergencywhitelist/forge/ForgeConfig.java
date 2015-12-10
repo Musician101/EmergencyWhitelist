@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import musician101.emergencywhitelist.common.AbstractConfig;
+import musician101.emergencywhitelist.common.Reference.Config;
+import musician101.emergencywhitelist.common.Reference.Messages;
 import musician101.emergencywhitelist.forge.lib.ModInfo;
 import musician101.emergencywhitelist.forge.util.EWLGameProfileList;
 import net.minecraftforge.common.config.Configuration;
@@ -32,20 +34,21 @@ public class ForgeConfig extends AbstractConfig
         configDir.mkdirs();
         if (config == null)
         {
-            config = new Configuration(new File(configDir, ModInfo.ID + ".cfg"));
+            config = new Configuration(new File(configDir, Config.EWL_CFG_CONFIG));
             reloadConfiguration();
         }
 
+        File whitelistFile = new File(configDir, Config.EWL_JSON_CONFIG);
         try
         {
-            File whitelistFile = new File(configDir, "whitelist.json");
             BufferedReader r = new BufferedReader(new FileReader(whitelistFile));
             Gson gson = new Gson();
             EWLGameProfileList list = gson.fromJson(r.readLine(), EWLGameProfileList.class);
             list.getList().forEach(profile -> uuids.add(profile.getUUID()));
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
-            ForgeEmergencyWhitelist.logger.warn("An error occurred while loading the whitelist.");
+            ForgeEmergencyWhitelist.logger.warn(Messages.fileLoadFailed(whitelistFile));
         }
     }
 
@@ -53,7 +56,7 @@ public class ForgeConfig extends AbstractConfig
     public void reloadConfiguration()
     {
         config.load();
-        setWhitelistEnabled(config.getBoolean("enabled", Configuration.CATEGORY_GENERAL, false, "Enable/Disable the whitelist."));
+        setWhitelistEnabled(config.getBoolean(Config.ENABLED, Configuration.CATEGORY_GENERAL, false, "Enable/Disable the whitelist."));
         if (config.hasChanged())
             config.save();
     }

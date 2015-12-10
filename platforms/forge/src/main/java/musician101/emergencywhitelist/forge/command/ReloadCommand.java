@@ -1,6 +1,10 @@
-package musician101.emergencywhitelist.forge.command.ewl;
+package musician101.emergencywhitelist.forge.command;
 
+import java.util.Arrays;
 import musician101.common.java.minecraft.forge.command.AbstractForgeCommand;
+import musician101.common.java.minecraft.forge.command.ForgeCommandArgument;
+import musician101.emergencywhitelist.common.Reference.Commands;
+import musician101.emergencywhitelist.common.Reference.Messages;
 import musician101.emergencywhitelist.forge.ForgeEmergencyWhitelist;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
@@ -9,7 +13,7 @@ public class ReloadCommand extends AbstractForgeCommand
 {
     public ReloadCommand()
     {
-        super("reload", "Reload the plugins configuration.", "/ewl reload", 0, false);
+        super(Commands.RELOAD_NAME, Commands.RELOAD_DESC, Arrays.asList(new ForgeCommandArgument(Commands.EWL_CMD), new ForgeCommandArgument(Commands.RELOAD_NAME)), 0, false);
     }
 
     @Override
@@ -19,6 +23,6 @@ public class ReloadCommand extends AbstractForgeCommand
             return;
 
         ForgeEmergencyWhitelist.config.reloadConfiguration();
-        sender.addChatMessage(new ChatComponentText("[EWL] Config reloaded."));
+        sender.addChatMessage(new ChatComponentText(Messages.CONFIG_RELOADED));
     }
 }

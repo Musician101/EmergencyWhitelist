@@ -1,5 +1,6 @@
 package musician101.emergencywhitelist.forge.listener;
 
+import musician101.emergencywhitelist.common.Reference.Messages;
 import musician101.emergencywhitelist.forge.ForgeEmergencyWhitelist;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -15,8 +16,8 @@ public class EWLListener
         {
             if (!ForgeEmergencyWhitelist.config.hasPermission(player.getUniqueID()))
             {
-                player.playerNetServerHandler.kickPlayerFromServer("EmergencyWhitelist has been enabled.");
-                ForgeEmergencyWhitelist.logger.info(player.getName() + " attempted to connect.");
+                player.playerNetServerHandler.kickPlayerFromServer(Messages.WHITELIST_ENABLED);
+                ForgeEmergencyWhitelist.logger.info(Messages.playerConnectAttempt(player.getName()));
             }
         }
     }

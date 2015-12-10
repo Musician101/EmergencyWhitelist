@@ -1,5 +1,7 @@
 package musician101.emergencywhitelist.common;
 
+import java.io.File;
+
 public class Reference
 {
     public static final String ID = "ewl";
@@ -23,29 +25,38 @@ public class Reference
 
     public static class Config
     {
-        public static final String EWL_FILE = ID + ".json";
+        public static final String CHECK_FOR_UPDATE = "checkForUpdate";
         public static final String ENABLED = "enabled";
+        public static final String EWL_CFG_CONFIG = ID + ".cfg";
+        public static final String EWL_JSON_CONFIG = ID + ".json";
+        public static final String EWL_YAML_CONFIG = "config.yml";
     }
 
     public static class Messages
     {
-        public static final String CONFIG_FAIL_CREATE = "Could not create " + Config.EWL_FILE;
+        public static final String CONFIG_FAIL_CREATE = "Could not create " + Config.EWL_JSON_CONFIG;
         public static final String CONFIG_FAIL_LOAD = "Could not load emergency_whitelist.json";
-        public static final String CONFIG_FAIL_SAVE = "Could not write to " + Config.EWL_FILE + ".";
+        public static final String CONFIG_FAIL_SAVE = "Could not write to " + Config.EWL_JSON_CONFIG + ".";
+        public static final String CONFIG_RELOADED = PREFIX + "Config reloaded.";
         public static final String NO_PERMISSION = PREFIX + "You do not have permission for that.";
         public static final String PLAYER_CMD = PREFIX + "This is a player command only.";
         public static final String WHITELIST_ENABLED = NAME + " has been enabled.";
         public static final String WHITELIST_LOG = "Use /ewl toggle to enable/disable the whitelist.";
         public static final String WHITELIST_MANUAL_UPDATE = "The 'enabled' option in the config file must be updated manually.";
 
-        public static String whitelistBroadcast(boolean enabled)
+        public static String fileLoadFailed(File file)
         {
-            return PREFIX + "Whitelist " + (enabled ? "enabled. Kicking non-whitelisted players" : "disabled") + ".";
+            return "Failed to load " + file.getName();
         }
 
         public static String playerConnectAttempt(String playerName)
         {
             return playerName + " attempted to connect.";
+        }
+
+        public static String whitelistBroadcast(boolean enabled)
+        {
+            return PREFIX + "Whitelist " + (enabled ? "enabled. Kicking non-whitelisted players" : "disabled") + ".";
         }
 
         public static String whitelistLog(boolean enabled)

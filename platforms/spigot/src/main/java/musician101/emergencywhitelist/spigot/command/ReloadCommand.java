@@ -27,6 +27,7 @@ public class ReloadCommand extends AbstractSpigotCommand
             return false;
 
         plugin.getPluginConfig().reloadConfiguration();
+        sender.sendMessage(ChatColor.GOLD + Messages.CONFIG_RELOADED);
         return true;
     }
 }
