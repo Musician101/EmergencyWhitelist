@@ -1,23 +1,22 @@
-package musician101.emergencywhitelist.sponge.command.ewl;
+package musician101.emergencywhitelist.sponge.command;
 
-import java.util.Collections;
-import javax.annotation.Nonnull;
 import musician101.common.java.minecraft.sponge.command.AbstractSpongeCommand;
 import musician101.common.java.minecraft.sponge.command.SpongeCommandArgument;
 import musician101.common.java.minecraft.sponge.command.SpongeHelpCommand;
 import musician101.emergencywhitelist.common.Reference;
 import musician101.emergencywhitelist.common.Reference.Commands;
-import org.spongepowered.api.text.Texts;
-import org.spongepowered.api.text.format.TextColors;
-import org.spongepowered.api.util.command.CommandException;
-import org.spongepowered.api.util.command.CommandResult;
-import org.spongepowered.api.util.command.CommandSource;
+import org.spongepowered.api.command.CommandException;
+import org.spongepowered.api.command.CommandResult;
+import org.spongepowered.api.command.CommandSource;
+
+import javax.annotation.Nonnull;
+import java.util.Collections;
 
 public class EWLCommand extends AbstractSpongeCommand
 {
     public EWLCommand()
     {
-        super(Reference.ID, Texts.builder(Commands.EWL_DESC).color(TextColors.GOLD).build(), Collections.singletonList(new SpongeCommandArgument(Commands.EWL_CMD)), 0, "", false, null, null, null);
+        super(Reference.ID, Commands.EWL_DESC, Collections.singletonList(new SpongeCommandArgument(Commands.EWL_CMD)), 0, "", false, null, null);
     }
 
     @Nonnull
@@ -35,6 +34,6 @@ public class EWLCommand extends AbstractSpongeCommand
                     return command.process(source, moveArguments(args));
         }
 
-        return CommandResult.success();
+        return new SpongeHelpCommand(this, source).process(source, moveArguments(args));
     }
 }

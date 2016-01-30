@@ -28,7 +28,7 @@ public class ToggleCommand extends AbstractSpigotCommand
 
         plugin.getConfig().set(Config.ENABLED, !plugin.getPluginConfig().isWhitelistEnabled());
         plugin.saveConfig();
-        plugin.getPluginConfig().reloadConfiguration();
+        plugin.getPluginConfig().setWhitelistEnabled(plugin.getPluginConfig().isWhitelistEnabled());
         return true;
     }
 }

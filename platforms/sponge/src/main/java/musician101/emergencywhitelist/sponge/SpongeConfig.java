@@ -1,75 +1,89 @@
 package musician101.emergencywhitelist.sponge;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import musician101.common.java.minecraft.sponge.config.SpongeJSONConfig;
-import musician101.emergencywhitelist.common.AbstractConfig;
+import musician101.common.java.minecraft.sponge.config.AbstractSpongeConfig;
+import musician101.emergencywhitelist.common.IEWLConfig;
 import musician101.emergencywhitelist.common.Reference;
 import musician101.emergencywhitelist.common.Reference.Config;
 import musician101.emergencywhitelist.common.Reference.Messages;
-import org.json.simple.parser.ParseException;
-import org.slf4j.Logger;
-import org.spongepowered.api.Game;
-import org.spongepowered.api.service.config.ConfigRoot;
-import org.spongepowered.api.service.config.ConfigService;
+import ninja.leaping.configurate.ConfigurationNode;
+import ninja.leaping.configurate.commented.CommentedConfigurationNode;
+import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
+import ninja.leaping.configurate.loader.ConfigurationLoader;
 
-public class SpongeConfig extends AbstractConfig
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+public class SpongeConfig extends AbstractSpongeConfig implements IEWLConfig
 {
-    File configFile;
-    SpongeJSONConfig config;
+    private boolean whitelistEnabled;
 
     public SpongeConfig()
     {
-        super();
-        Game game = SpongeEmergencyWhitelist.game;
-        ConfigRoot cr = game.getServiceManager().provide(ConfigService.class).get().getSharedConfig(game.getPluginManager().getPlugin(Reference.ID).get());
-        configFile = new File(cr.getDirectory().toFile(), Config.EWL_JSON_CONFIG);
-        reloadConfiguration();
+        super(new File("config", Reference.ID + ".conf"), SpongeEmergencyWhitelist.logger);
+        reload();
     }
 
     @Override
-    public void setWhitelistEnabled(boolean enabled)
+    public boolean isWhitelistEnabled()
     {
-        super.setWhitelistEnabled(enabled);
-        config.set(Config.ENABLED, enabled);
-        try
-        {
-            saveConfigFile();
-        }
-        catch (IOException e)
-        {
-            SpongeEmergencyWhitelist.logger.error(Messages.CONFIG_FAIL_SAVE);
-            SpongeEmergencyWhitelist.logger.error(Messages.WHITELIST_MANUAL_UPDATE);
-        }
+        return whitelistEnabled;
+    }
+
+    @Override
+    public void setWhitelistEnabled(boolean whitelistEnabled)
+    {
+        this.whitelistEnabled = whitelistEnabled;
     }
     
     @Override
-    public void reloadConfiguration()
+    public void reload()
     {
-        Logger logger = SpongeEmergencyWhitelist.logger;
         try
         {
-            if (!configFile.exists() && !configFile.createNewFile())
+            if (!configFile.exists())
             {
-                logger.warn(Messages.CONFIG_FAIL_CREATE);
-                return;
+                if (!configFile.createNewFile())
+                    throw new IOException();
+
+                URL url = SpongeEmergencyWhitelist.class.getResource(configFile.getName());
+                if (url == null)
+                    throw new IOException();
+
+                URLConnection connection = url.openConnection();
+                connection.setUseCaches(false);
+                InputStream input = connection.getInputStream();
+                OutputStream output = new FileOutputStream(configFile);
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = input.read(buf)) > 0)
+                    output.write(buf, 0, len);
+
+                output.close();
+                input.close();
             }
-
-            config = SpongeJSONConfig.load(configFile);
-            setWhitelistEnabled(config.getBoolean(Config.ENABLED, true));
         }
-        catch (IOException | ParseException e)
+        catch (IOException e)
         {
-            logger.error(Messages.CONFIG_FAIL_LOAD);
-            setWhitelistEnabled(true);
+            logger.error(Messages.fileCreateFailed(configFile));
         }
-    }
 
-    private void saveConfigFile() throws IOException
-    {
-        FileWriter fw = new FileWriter(configFile);
-        fw.write(config.toJSONString());
-        fw.close();
+        ConfigurationLoader<CommentedConfigurationNode> loader = HoconConfigurationLoader.builder().setFile(configFile).build();
+        ConfigurationNode config;
+        try
+        {
+            config = loader.load();
+        }
+        catch (IOException e)
+        {
+            logger.error(Messages.fileLoadFailed(configFile));
+            return;
+        }
+
+        whitelistEnabled = config.getNode(Config.ENABLED).getBoolean(false);
     }
 }

@@ -1,33 +1,41 @@
 package musician101.emergencywhitelist.spigot;
 
-import java.io.File;
-import musician101.emergencywhitelist.common.AbstractConfig;
+import musician101.common.java.minecraft.spigot.config.AbstractSpigotConfig;
+import musician101.emergencywhitelist.common.IEWLConfig;
 import musician101.emergencywhitelist.common.Reference.Config;
 import musician101.emergencywhitelist.spigot.util.KickPlayers;
 import org.bukkit.configuration.file.FileConfiguration;
 
-public class SpigotConfig extends AbstractConfig
+public class SpigotConfig extends AbstractSpigotConfig<SpigotEmergencyWhitelist> implements IEWLConfig
 {
-    private final SpigotEmergencyWhitelist plugin;
     private boolean updateCheck;
+    private boolean whitelistEnabled;
 
     public SpigotConfig(SpigotEmergencyWhitelist plugin)
     {
-        super();
-        this.plugin = plugin;
-        File config = new File(plugin.getDataFolder(), Config.EWL_YAML_CONFIG);
-        if (!config.exists())
-            plugin.saveDefaultConfig();
-
-        reloadConfiguration();
+        super(plugin);
+        reload();
     }
 
     @Override
-    public void reloadConfiguration()
+    public boolean isWhitelistEnabled()
     {
+        return whitelistEnabled;
+    }
+
+    @Override
+    public void setWhitelistEnabled(boolean whitelistEnabled)
+    {
+        this.whitelistEnabled = whitelistEnabled;
+    }
+
+    @Override
+    public void reload()
+    {
+        if (!configFile.exists())
         plugin.reloadConfig();
-        final FileConfiguration config = plugin.getConfig();
-        setWhitelistEnabled(config.getBoolean(Config.ENABLED, true));
+        FileConfiguration config = plugin.getConfig();
+        whitelistEnabled = config.getBoolean(Config.ENABLED, true);
         updateCheck = config.getBoolean(Config.CHECK_FOR_UPDATE, true);
         KickPlayers.kickPlayers(plugin, isWhitelistEnabled());
     }
