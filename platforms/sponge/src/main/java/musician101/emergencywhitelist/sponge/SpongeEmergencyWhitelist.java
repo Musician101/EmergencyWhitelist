@@ -1,6 +1,7 @@
 package musician101.emergencywhitelist.sponge;
 
 import musician101.emergencywhitelist.common.Reference;
+import musician101.emergencywhitelist.sponge.command.EWLSpongeCommand;
 import musician101.emergencywhitelist.sponge.listener.EWLListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,8 @@ public class SpongeEmergencyWhitelist
     public void onServerStart(GameStartedServerEvent event)
     {
         logger = LoggerFactory.getLogger(Reference.NAME);
-
         config = new SpongeConfig();
-
         Sponge.getEventManager().registerListener(this, Login.class, new EWLListener());
+        Sponge.getCommandManager().register(this, new EWLSpongeCommand(), "ewl");
     }
 }

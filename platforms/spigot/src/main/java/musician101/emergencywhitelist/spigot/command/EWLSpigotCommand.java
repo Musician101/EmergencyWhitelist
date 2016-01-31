@@ -10,13 +10,13 @@ import musician101.emergencywhitelist.common.Reference.Commands;
 import musician101.emergencywhitelist.spigot.SpigotEmergencyWhitelist;
 import org.bukkit.command.CommandSender;
 
-public class EWLCommand extends AbstractSpigotCommand
+public class EWLSpigotCommand extends AbstractSpigotCommand
 {
     private final SpigotEmergencyWhitelist plugin;
 
-    public EWLCommand(SpigotEmergencyWhitelist plugin)
+    public EWLSpigotCommand(SpigotEmergencyWhitelist plugin)
     {
-        super(Reference.ID, Commands.EWL_DESC, Collections.singletonList(new SpigotCommandArgument(Commands.EWL_CMD)), 0, "", false, "", "", Arrays.asList(new ReloadCommand(plugin), new ToggleCommand(plugin)));
+        super(Reference.ID, Commands.EWL_DESC, Collections.singletonList(new SpigotCommandArgument(Commands.EWL_CMD)), 0, "", false, "", "", Arrays.asList(new ReloadSpigotCommand(plugin), new ToggleSpigotCommand(plugin)));
         this.plugin = plugin;
     }
 

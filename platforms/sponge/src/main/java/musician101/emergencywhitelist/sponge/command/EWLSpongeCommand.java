@@ -10,13 +10,14 @@ import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 import java.util.Collections;
 
-public class EWLCommand extends AbstractSpongeCommand
+public class EWLSpongeCommand extends AbstractSpongeCommand
 {
-    public EWLCommand()
+    public EWLSpongeCommand()
     {
-        super(Reference.ID, Commands.EWL_DESC, Collections.singletonList(new SpongeCommandArgument(Commands.EWL_CMD)), 0, "", false, null, null);
+        super(Reference.ID, Commands.EWL_DESC, Collections.singletonList(new SpongeCommandArgument(Commands.EWL_CMD)), 0, "", false, null, null, Arrays.asList(new ReloadSpongeCommand(), new ToggleSpongeCommand()));
     }
 
     @Nonnull

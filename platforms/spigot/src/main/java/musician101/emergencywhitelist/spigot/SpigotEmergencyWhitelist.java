@@ -3,7 +3,7 @@ package musician101.emergencywhitelist.spigot;
 import java.util.Collections;
 import java.util.List;
 import musician101.common.java.minecraft.spigot.command.AbstractSpigotCommand;
-import musician101.emergencywhitelist.spigot.command.EWLCommand;
+import musician101.emergencywhitelist.spigot.command.EWLSpigotCommand;
 import musician101.emergencywhitelist.spigot.listener.EWLListener;
 import musician101.emergencywhitelist.spigot.util.KickPlayers;
 import net.gravitydevelopment.updater.Updater;
@@ -45,7 +45,7 @@ public class SpigotEmergencyWhitelist extends JavaPlugin
         config = new SpigotConfig(this);
 
         getServer().getPluginManager().registerEvents(new EWLListener(this), this);
-        commands = Collections.singletonList(new EWLCommand(this));
+        commands = Collections.singletonList(new EWLSpigotCommand(this));
 
         KickPlayers.kickPlayers(this, config.isWhitelistEnabled());
 
