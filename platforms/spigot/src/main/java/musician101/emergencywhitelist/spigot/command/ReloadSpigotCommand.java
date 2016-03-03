@@ -10,14 +10,11 @@ import musician101.emergencywhitelist.spigot.SpigotEmergencyWhitelist;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-public class ReloadSpigotCommand extends AbstractSpigotCommand
+public class ReloadSpigotCommand extends AbstractSpigotCommand<SpigotEmergencyWhitelist>
 {
-    private final SpigotEmergencyWhitelist plugin;
-
     public ReloadSpigotCommand(SpigotEmergencyWhitelist plugin)
     {
-        super(Commands.RELOAD_NAME, Commands.RELOAD_DESC, Arrays.asList(new SpigotCommandArgument(Commands.EWL_CMD), new SpigotCommandArgument(Commands.RELOAD_NAME)), 0, Permissions.RELOAD, false, ChatColor.RED + Messages.NO_PERMISSION, Messages.PLAYER_CMD);
-        this.plugin = plugin;
+        super(plugin, Commands.RELOAD_NAME, Commands.RELOAD_DESC, Arrays.asList(new SpigotCommandArgument(Commands.EWL_CMD), new SpigotCommandArgument(Commands.RELOAD_NAME)), 0, Permissions.RELOAD, false, ChatColor.RED + Messages.NO_PERMISSION, Messages.PLAYER_CMD);
     }
 
     @Override

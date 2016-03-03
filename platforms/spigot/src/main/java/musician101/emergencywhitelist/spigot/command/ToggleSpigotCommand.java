@@ -10,14 +10,11 @@ import musician101.emergencywhitelist.common.Reference.Permissions;
 import musician101.emergencywhitelist.spigot.SpigotEmergencyWhitelist;
 import org.bukkit.command.CommandSender;
 
-public class ToggleSpigotCommand extends AbstractSpigotCommand
+public class ToggleSpigotCommand extends AbstractSpigotCommand<SpigotEmergencyWhitelist>
 {
-    private final SpigotEmergencyWhitelist plugin;
-
     public ToggleSpigotCommand(SpigotEmergencyWhitelist plugin)
     {
-        super(Commands.TOGGLE_NAME, Commands.TOGGLE_DESC, Arrays.asList(new SpigotCommandArgument(Commands.EWL_CMD), new SpigotCommandArgument(Commands.TOGGLE_NAME)), 0, Permissions.TOGGLE, false, Messages.NO_PERMISSION, Messages.PLAYER_CMD);
-        this.plugin = plugin;
+        super(plugin, Commands.TOGGLE_NAME, Commands.TOGGLE_DESC, Arrays.asList(new SpigotCommandArgument(Commands.EWL_CMD), new SpigotCommandArgument(Commands.TOGGLE_NAME)), 0, Permissions.TOGGLE, false, Messages.NO_PERMISSION, Messages.PLAYER_CMD);
     }
 
     @Override
