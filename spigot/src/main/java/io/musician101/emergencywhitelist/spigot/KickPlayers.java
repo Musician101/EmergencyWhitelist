@@ -12,22 +12,19 @@ public class KickPlayers implements Runnable
 
     }
 
-    public static void kickPlayers(SpigotEmergencyWhitelist plugin, boolean enabled)
+    public static void kickPlayers(boolean enabled)
     {
         if (enabled)
-            plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new KickPlayers(), 100L);
+            SpigotEmergencyWhitelist.instance().getServer().getScheduler().scheduleSyncDelayedTask(SpigotEmergencyWhitelist.instance(), new KickPlayers(), 100L);
 
-        plugin.getLogger().info(Messages.whitelistLog(enabled));
-        plugin.getLogger().info(Messages.WHITELIST_LOG);
+        SpigotEmergencyWhitelist.instance().getLogger().info(Messages.whitelistLog(enabled));
+        SpigotEmergencyWhitelist.instance().getLogger().info(Messages.WHITELIST_LOG);
         Bukkit.broadcastMessage(ChatColor.GOLD + Messages.whitelistBroadcast(enabled));
     }
 
     @Override
     public void run()
     {
-        Bukkit.getOnlinePlayers().forEach(player -> {
-            if (!player.hasPermission(Permissions.WHITELIST))
-                player.kickPlayer(Messages.WHITELIST_ENABLED);
-        });
+        Bukkit.getOnlinePlayers().stream().filter(player -> !player.hasPermission(Permissions.WHITELIST)).forEach(player -> player.kickPlayer(Messages.WHITELIST_ENABLED));
     }
 }

@@ -17,7 +17,7 @@ public class SpigotEmergencyWhitelist extends AbstractSpigotPlugin<SpigotConfig>
         config = new SpigotConfig();
         getServer().getPluginManager().registerEvents(new EWLListener(), this);
         commands = Collections.singletonList(new EWLSpigotCommand());
-        KickPlayers.kickPlayers(this, config.isWhitelistEnabled());
+        KickPlayers.kickPlayers(config.isWhitelistEnabled());
         versionCheck(46809);
     }
 

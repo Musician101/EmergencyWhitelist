@@ -72,5 +72,6 @@ public class SpongeConfig extends EWLConfig
         }
 
         whitelistEnabled = config.getNode(Config.ENABLED).getBoolean(false);
+        KickPlayers.kickPlayers(whitelistEnabled);
     }
 }

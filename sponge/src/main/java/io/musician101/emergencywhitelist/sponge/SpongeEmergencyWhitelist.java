@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
-import org.spongepowered.api.event.network.ClientConnectionEvent.Login;
 import org.spongepowered.api.plugin.Plugin;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
@@ -22,6 +21,7 @@ public class SpongeEmergencyWhitelist extends AbstractSpongePlugin<SpongeConfig>
         config = new SpongeConfig();
         Sponge.getEventManager().registerListeners(this, new EWLListener());
         Sponge.getCommandManager().register(this, new EWLSpongeCommand(), "ewl");
+        KickPlayers.kickPlayers(config.isWhitelistEnabled());
     }
 
     public static SpongeEmergencyWhitelist instance()

@@ -22,6 +22,6 @@ public class SpigotConfig extends EWLConfig
         FileConfiguration config = instance.getConfig();
         whitelistEnabled = config.getBoolean(Config.ENABLED, true);
         updateCheck = config.getBoolean(Config.CHECK_FOR_UPDATE, true);
-        KickPlayers.kickPlayers(instance, isWhitelistEnabled());
+        KickPlayers.kickPlayers(isWhitelistEnabled());
     }
 }
