@@ -1,5 +1,0 @@
-#Is the whitelist enabled? True if yes, otherwise false.
-enabled: true
-
-#Update Checker
-checkForUpdate: true

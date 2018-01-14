@@ -1,0 +1,3 @@
+rootProject.name = 'EmergencyWhitelist'
+
+include 'emergencywhitelist-common', 'emergencywhitelist-spigot', 'emergencywhitelist-sponge'
