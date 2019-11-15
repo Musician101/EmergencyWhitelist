@@ -1,9 +1,10 @@
 name: EmergencyWhitelist
 main: musician101.emergencywhitelist.EmergencyWhitelist
-version: 2.0
+version: '2.0'
 description: Secondary whitelisting for server admins.
 authors: [Musician101]
 maintainer: Musician101
+api-version: '1.14'
 
 commands:
     ewl:
