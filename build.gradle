@@ -1,26 +1,28 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
-    }
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0' apply false
 }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'maven'
     apply plugin: 'com.github.johnrengelman.shadow'
 
     group = project.pluginGroup
     version = project.pluginVersion
 
-    sourceCompatibility = '1.8'
-    targetCompatibility = '1.8'
-
     repositories {
         mavenCentral()
         mavenLocal()
+    }
+
+    shadowJar {
+        archiveFileName = "${project.pluginId}-${project.version}.jar"
+        dependencies {
+            include dependency('io.musician101:')
+        }
+        relocate 'io.musician101.musicianlibrary', 'io.musician101.emergencywhitelist.lib.io.musician101.musicianlibrary'
+        dependsOn build
     }
 }

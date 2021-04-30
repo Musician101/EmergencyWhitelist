@@ -1,0 +1,20 @@
+{
+    "plugins": [
+        {
+            "loader": "java_plain",
+            "id": "emergencywhitelist",
+            "name": "Emergency Whitelist",
+            "version": "2.0",
+            "main-class": "io.musician101.emergencywhitelist.sponge.SpongeEmergencyWhitelist",
+            "description": "Secondary whitelisting for server admins.",
+            "contributors": [{
+                "name": "Musician101",
+                "description": "Lead Developer"
+            }],
+            "dependencies": [{
+                "id": "spongeapi",
+                "version": "8.0.0"
+            }]
+        }
+    ]
+}

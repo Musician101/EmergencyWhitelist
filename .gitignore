@@ -1,0 +1,11 @@
+/.idea/
+/.gradle/
+/out/
+/common/out/
+/forge/out/
+/spigot/out/
+/sponge/out/
+
+common/build/
+spigot/build/
+sponge/build/
